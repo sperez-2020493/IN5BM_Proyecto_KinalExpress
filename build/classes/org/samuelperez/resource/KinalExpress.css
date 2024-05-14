@@ -1,0 +1,16 @@
+.menubar{
+    -fx-background-color: transparent;
+    -fxopacy: 0.5;
+    -fx-border-width: 2.5; 
+}
+
+.table-view.column-header,
+.table-view.column-background.filer{
+    -fx-cell-size: 20;
+    -fx-background-color: #FF914D;
+    
+}
+
+.table-row-cell:selected{
+    -fx-background-color: #C1FF2; 
+}

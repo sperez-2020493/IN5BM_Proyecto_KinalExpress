@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.samuelperez.controller.MenuTipoProductoController">
+   <children>
+      <ImageView fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/MenuTipoProducto_Fondo.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnRegresar" alignment="TOP_LEFT" contentDisplay="TOP" layoutX="1181.0" layoutY="23.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="47.0" prefWidth="73.0" style="-fx-background-color: #FF914D;" text="Rregresar">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="49.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/View_IconRegresar.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="btnAgregar" layoutX="58.0" layoutY="196.0" mnemonicParsing="false" onAction="#Agregar" prefHeight="25.0" prefWidth="156.0" style="-fx-background-color: #80DA58;" text="Agregar" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <graphic>
+            <ImageView fx:id="imgAgregar" fitHeight="49.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/MenuClientes_IconAgregarUsuario.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="btnEditar" layoutX="58.0" layoutY="292.0" mnemonicParsing="false" onAction="#editar" prefHeight="59.0" prefWidth="156.0" style="-fx-background-color: #80DA58;" text="Editar" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <graphic>
+            <ImageView fx:id="imgEditar" fitHeight="49.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/MenuClientes_IconEditarUsuario.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="btnEliminar" layoutX="1071.0" layoutY="196.0" mnemonicParsing="false" onAction="#eliminar" prefHeight="25.0" prefWidth="156.0" style="-fx-background-color: #80DA58;" text="Eliminar" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <graphic>
+            <ImageView fx:id="imgEliminar" fitHeight="49.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/MenuClientes_IconEliminarUsuario.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="btnReport" layoutX="1071.0" layoutY="292.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="25.0" prefWidth="156.0" style="-fx-background-color: #80DA58;" text="Report" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <graphic>
+            <ImageView fx:id="imgReport" fitHeight="49.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/MenuClientes_IconReportUsuario.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <TableView fx:id="tblTipoProducto" layoutX="245.0" layoutY="142.0" onMouseClicked="#seleccionarElemento" prefHeight="391.0" prefWidth="791.0">
+         <columns>
+            <TableColumn fx:id="colTipoPorductoT" minWidth="395.5" prefWidth="30.0" text="TIPO PRODUCTO ID" />
+            <TableColumn fx:id="colDescripcionT" minWidth="395.5" prefWidth="75.0" text="DESCRIPCION" />
+         </columns>
+      </TableView>
+      <GridPane layoutX="150.0" layoutY="558.0" prefHeight="52.0" prefWidth="427.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <TextField fx:id="txtCodigoTipoProducto" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label alignment="CENTER" prefHeight="25.0" prefWidth="217.0" text="Tipo Prodicto ID" textAlignment="RIGHT" GridPane.columnIndex="1">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </GridPane>
+      <TextField fx:id="txtDescripcionTipoProducto" layoutX="721.0" layoutY="585.0" prefHeight="19.0" prefWidth="196.0" />
+      <Label alignment="CENTER" layoutX="712.0" layoutY="559.0" prefHeight="25.0" prefWidth="213.0" text="Descripcion">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
