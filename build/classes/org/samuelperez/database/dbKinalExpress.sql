@@ -368,6 +368,7 @@ end $$
 delimiter ;
 
 call sp_AgregarProductos('1','Coca-Cola de 3L',15.5,192,14,'Coca cola espuma',4,1,1);
+call sp_AgregarProductos('3','Coca-Cola de 3L',15.5,192,14,'Coca cola espuma',4,1,1);
 
 
 delimiter $$

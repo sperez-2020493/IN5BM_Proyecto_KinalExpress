@@ -37,8 +37,7 @@ public class TipoProducto {
 
     @Override
     public String toString() {
-        return "TipoProducto{" + "codigoTipoProducto=" + codigoTipoProducto + ", descripcion=" + descripcion + '}';
+        return "| " + getCodigoTipoProducto() + " | " + getDescripcion();
     }
-
 
 }

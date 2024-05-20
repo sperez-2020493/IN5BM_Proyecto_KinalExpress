@@ -292,7 +292,6 @@ public class MenuClientesController implements Initializable {
         }
     }
 
-    
     public void editar() {
         switch (tipoDeOperaciones) {
             case NINGUNO:
@@ -330,13 +329,13 @@ public class MenuClientesController implements Initializable {
     public void actualizar() {
         try {
             PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_ActualizarClientes(?,?,?,?,?,?,?)}");
-            Clientes registro = ((Clientes)tblClientes.getSelectionModel().getSelectedItem());
-        registro.setNombresCliente((txtNombresCliente.getText()));
-        registro.setApellidosCliente((txtApellidosCliente.getText()));
-        registro.setNITClientes((txtNitCliente.getText()));
-        registro.setTelefonoCliente((txtTelefonoCliente.getText()));
-        registro.setDireccionCliente((txtDireccionCliente.getText()));
-        registro.setCorreoCliente((txtCorreoCliente.getText())); 
+            Clientes registro = ((Clientes) tblClientes.getSelectionModel().getSelectedItem());
+            registro.setNombresCliente((txtNombresCliente.getText()));
+            registro.setApellidosCliente((txtApellidosCliente.getText()));
+            registro.setNITClientes((txtNitCliente.getText()));
+            registro.setTelefonoCliente((txtTelefonoCliente.getText()));
+            registro.setDireccionCliente((txtDireccionCliente.getText()));
+            registro.setCorreoCliente((txtCorreoCliente.getText()));
             procedimiento.setInt(1, registro.getCodigoCliente());
             procedimiento.setString(2, registro.getNITClientes());
             procedimiento.setString(3, registro.getNombresCliente());
@@ -345,12 +344,10 @@ public class MenuClientesController implements Initializable {
             procedimiento.setString(6, registro.getTelefonoCliente());
             procedimiento.setString(7, registro.getCorreoCliente());
             procedimiento.execute();
-        } catch (Exception e){ 
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
-    
 
     public void desactivarControles() {
         txtCodigoCliente.setEditable(false);

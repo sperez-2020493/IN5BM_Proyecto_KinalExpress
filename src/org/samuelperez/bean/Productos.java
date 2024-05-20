@@ -108,6 +108,10 @@ public class Productos {
         this.CodigoProveedor = CodigoProveedor;
     }
 
+    @Override
+    public String toString() {
+        return "| " + getCodigoProducto() + " | " + getPrecioUnitario() + " | " + getImagenProducto() + " | " + getExistencia() + "|";
+    }
 }
 
 
