@@ -14,7 +14,6 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.samuelperez.controller.MenuDetalleComprasController">
    <children>
       <ImageView fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
@@ -34,7 +33,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <TableView fx:id="tblProductos" layoutX="220.0" layoutY="155.0" prefHeight="391.0" prefWidth="840.0">
+      <TableView fx:id="tblDetalleCompras" layoutX="220.0" layoutY="155.0" onMouseClicked="#seleccionarElemento" prefHeight="391.0" prefWidth="840.0">
          <columns>
             <TableColumn fx:id="colDetalleCompraD" minWidth="168.0" prefWidth="30.0" text="ID" />
             <TableColumn fx:id="colConstoUnitarioD" minWidth="168.0" prefWidth="75.0" text="COSTO UNITARIO" />
@@ -43,7 +42,7 @@
             <TableColumn fx:id="colNumeroProductoD" minWidth="168.0" prefWidth="97.0" text="NUMERO DOCUMENTO" />
          </columns>
       </TableView>
-      <Button fx:id="btnAgregar" layoutX="19.0" layoutY="214.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="156.0" style="-fx-background-color: #80DA58;" text="Agregar" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
+      <Button fx:id="btnAgregar" layoutX="19.0" layoutY="214.0" mnemonicParsing="false" onAction="#agregar" prefHeight="25.0" prefWidth="156.0" style="-fx-background-color: #80DA58;" text="Agregar" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -55,7 +54,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btnEditar" layoutX="19.0" layoutY="321.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="156.0" style="-fx-background-color: #80DA58;" text="Editar" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="btnEditar" layoutX="19.0" layoutY="321.0" mnemonicParsing="false" onAction="#editar" prefHeight="59.0" prefWidth="156.0" style="-fx-background-color: #80DA58;" text="Editar" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -67,7 +66,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btnReport" layoutX="1089.0" layoutY="321.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="156.0" style="-fx-background-color: #80DA58;" text="Report" textFill="WHITE">
+      <Button fx:id="btnReport" layoutX="1089.0" layoutY="321.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="25.0" prefWidth="156.0" style="-fx-background-color: #80DA58;" text="Report" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -79,7 +78,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btnEliminar" layoutX="1089.0" layoutY="214.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="156.0" style="-fx-background-color: #80DA58;" text="Eliminar" textFill="WHITE">
+      <Button fx:id="btnEliminar" layoutX="1089.0" layoutY="214.0" mnemonicParsing="false" onAction="#eliminar" prefHeight="25.0" prefWidth="156.0" style="-fx-background-color: #80DA58;" text="Eliminar" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
