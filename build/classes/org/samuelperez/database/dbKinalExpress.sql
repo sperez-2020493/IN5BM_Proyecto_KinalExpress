@@ -106,7 +106,7 @@ create table Factura(
 );
 
 create table DetalleFactura(
-	codigoDetalleFactura int not null,
+	codigoDetalleFacturFactura int not null,
     precioUnitario decimal(10,2),
     cantidad int,
     numeroFactura int,
@@ -141,6 +141,15 @@ end $$
 delimiter ;
 
 call sp_ListarCompras();
+
+delimiter $$
+create procedure sp_BuscarCompra(in numeroDocumento int)
+begin
+	select * from Compras where Compras.numeroDocumento = numeroDocumento;
+end $$
+delimiter ;
+
+call sp_BuscarCompra(2);
 
 delimiter $$
 create procedure sp_ActualizarCompras(in numeroDocumento int, in fechaDocumento date, in descripcion varchar(60), in totalDocumento decimal(10,2))

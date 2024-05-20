@@ -357,6 +357,9 @@ public class MenuProveedoresController implements Initializable {
         }
     }
 
+    /**
+     * Se encarga de desactivar los textFiel.
+     */
     public void desactivarControles() {
         txtCodigoProveedor.setEditable(false);
         txtNitProveedor.setEditable(false);
@@ -368,6 +371,9 @@ public class MenuProveedoresController implements Initializable {
         txtPaginaWebPorveedor.setEditable(false);
     }
 
+    /**
+     * Se encarga de activar los textFiel.
+     */
     public void activarControles() {
         txtCodigoProveedor.setEditable(true);
         txtNitProveedor.setEditable(true);
@@ -379,6 +385,9 @@ public class MenuProveedoresController implements Initializable {
         txtPaginaWebPorveedor.setEditable(true);
     }
 
+    /**
+     * Se encarga de limpiar los textFiel.
+     */
     public void limpiarControles() {
         txtCodigoProveedor.clear();
         txtNitProveedor.clear();

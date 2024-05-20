@@ -15,6 +15,8 @@ import org.samuelperez.controller.MenuCargoEmpleadoController;
 import org.samuelperez.controller.MenuClientesController;
 import org.samuelperez.controller.MenuComprasController;
 import org.samuelperez.controller.MenuDetalleComprasController;
+import org.samuelperez.controller.MenuDetalleFacturaController;
+import org.samuelperez.controller.MenuFacturaController;
 import org.samuelperez.controller.MenuPrincipalController;
 import org.samuelperez.controller.MenuProductosController;
 import org.samuelperez.controller.MenuProgramadorController;
@@ -181,6 +183,26 @@ public class Principal extends Application {
         try{
             MenuDetalleComprasController MenuDetalleCompras = (MenuDetalleComprasController)cambiarEscena("MenuDetalleCompras.fxml", 1280, 720);
             MenuDetalleCompras.setEscenarioPrincipal(this);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+       }
+    }
+    
+    public void menuFacturaView() {
+        try{
+            MenuFacturaController MenuFactura = (MenuFacturaController)cambiarEscena("MenuFactura.fxml", 1280, 720);
+            MenuFactura.setEscenarioPrincipal(this);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public void menuDetalleFacturaView() {
+        try{
+            MenuDetalleFacturaController MenuDetalleFactura = (MenuDetalleFacturaController)cambiarEscena("MenuDetalleFactura.fxml", 1280, 720);
+            MenuDetalleFactura.setEscenarioPrincipal(this);
         }catch(Exception e){
             System.out.println(e.getMessage());
             e.printStackTrace();

@@ -35,6 +35,8 @@ public class MenuProductosController implements Initializable {
     private ObservableList<Productos> listaProductos;
     private ObservableList<Proveedores> listaProveedores;
     private ObservableList<TipoProducto> listaTipoProducto;
+    private ObservableList<Productos> buscarProductos;
+
 
     private enum operaciones {
         AGREGAR, ELIMINAR, EDITAR, ACTUALIZAR, CANCELAR, NINGUNO
@@ -147,6 +149,8 @@ public class MenuProductosController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         cargarDatos();
+        cmbCodigoTipoP.setItems(getTipoProducto());
+        cmbCodigoP.setItems(getProveedores());
     }
 
     /**
@@ -456,6 +460,9 @@ public class MenuProductosController implements Initializable {
         tipoDeOperaciones = operaciones.NINGUNO;
     }
     
+    /**
+     * Se encarga de desactivar los textFiel.
+     */
     public void desactivarControles() {
         txtCodigoProducto.setEditable(false);
         txtDescripcionProducto.setEditable(false);
@@ -468,6 +475,10 @@ public class MenuProductosController implements Initializable {
         cmbCodigoP.setDisable(true);
     }
 
+    
+    /**
+     * Se encarga de activar los textFiel.
+     */
     public void activarControles() {
         txtCodigoProducto.setEditable(true);
         txtDescripcionProducto.setEditable(true);
@@ -480,6 +491,9 @@ public class MenuProductosController implements Initializable {
         cmbCodigoP.setDisable(false);
     }
 
+    /**
+     * Se encarga de limpiar los textFiel.
+     */    
     public void limpiarControles() {
         txtCodigoProducto.clear();
         txtDescripcionProducto.clear();

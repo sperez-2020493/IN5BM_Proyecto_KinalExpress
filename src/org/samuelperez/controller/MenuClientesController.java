@@ -349,6 +349,9 @@ public class MenuClientesController implements Initializable {
         }
     }
 
+    /**
+     * Se encarga de desactivar los textFiel.
+     */
     public void desactivarControles() {
         txtCodigoCliente.setEditable(false);
         txtNombresCliente.setEditable(false);
@@ -359,6 +362,9 @@ public class MenuClientesController implements Initializable {
         txtCorreoCliente.setEditable(false);
     }
 
+    /**
+     * Se encarga de activar los textField.
+     */
     public void activarControles() {
         txtCodigoCliente.setEditable(true);
         txtNombresCliente.setEditable(true);
@@ -369,6 +375,9 @@ public class MenuClientesController implements Initializable {
         txtCorreoCliente.setEditable(true);
     }
 
+    /**
+     * Se encarga de limpia los textField.
+     */
     public void limpiarControles() {
         txtCodigoCliente.clear();
         txtNombresCliente.clear();

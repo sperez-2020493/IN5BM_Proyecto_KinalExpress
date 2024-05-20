@@ -123,11 +123,13 @@ public class MenuDetalleComprasController implements Initializable {
      */
     public void setEscenarioPrincipal(Principal escenarioPrincipal) {
         this.escenarioPrincipal = escenarioPrincipal;
-    }
+     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         cargarDatos();
+        cmbCodigoProductos.setItems(getProductos());
+        cmbNumeroDocumento.setItems(getCompras());
     }
 
     /**
@@ -418,6 +420,9 @@ public class MenuDetalleComprasController implements Initializable {
         tipoDeOperaciones = operaciones.NINGUNO;
     }
 
+    /**
+     * Se encarga de desactivar los textFiel.
+     */
     public void desactivarControles() {
         txtCodigoDetalleC.setEditable(false);
         txtCostoUnitario.setEditable(false);
@@ -426,6 +431,9 @@ public class MenuDetalleComprasController implements Initializable {
         cmbNumeroDocumento.setDisable(true);
     }
 
+    /**
+     * Se encarga de activar los textFiel.
+     */
     public void activarControles() {
         txtCodigoDetalleC.setEditable(true);
         txtCostoUnitario.setEditable(true);
@@ -434,6 +442,9 @@ public class MenuDetalleComprasController implements Initializable {
         cmbNumeroDocumento.setDisable(false);
     }
 
+    /**
+     * Se encarga de limpiar los textFiel.
+     */
     public void limpiarControles() {
         txtCodigoDetalleC.clear();
         txtCostoUnitario.clear();

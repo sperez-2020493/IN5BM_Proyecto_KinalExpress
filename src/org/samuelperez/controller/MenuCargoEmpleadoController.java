@@ -296,18 +296,28 @@ public class MenuCargoEmpleadoController implements Initializable {
         }
     }
     
+    
+    /**
+     * Se encarga de desactivar los textFiel.
+     */
     public void desactivarControles() {
         txtCodigoCargoEmpleado.setEditable(false);
         txtNombreCargoEmpleado.setEditable(false);
         txtDescripcionCargoEmpleado.setEditable(false);
     }
 
+    /**
+     * Se encarga de activar los textFiel.
+     */
     public void activarControles() {
         txtCodigoCargoEmpleado.setEditable(true);
         txtNombreCargoEmpleado.setEditable(true);
         txtDescripcionCargoEmpleado.setEditable(true);
     }
 
+    /**
+     * Se encarga de limpiar los textFiel.
+     */
     public void limpiarControles() {
         txtCodigoCargoEmpleado.clear();
         txtNombreCargoEmpleado.clear();

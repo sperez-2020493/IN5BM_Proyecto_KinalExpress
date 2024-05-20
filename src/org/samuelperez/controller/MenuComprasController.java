@@ -318,6 +318,10 @@ public class MenuComprasController implements Initializable {
         }
     }
 
+    
+    /**
+     * Se encarga de desactivar los textFiel.
+     */
     public void desactivarControles() {
         txtCodigoCompra.setEditable(false);
         txtFechaDcumento.setEditable(false);
@@ -325,6 +329,9 @@ public class MenuComprasController implements Initializable {
         txtTotalDocumento.setEditable(false);
     }
 
+    /**
+     * Se encarga de activar los textFiel.
+     */
     public void activarControles() {
         txtCodigoCompra.setEditable(true);
         txtFechaDcumento.setEditable(true);
@@ -332,6 +339,9 @@ public class MenuComprasController implements Initializable {
         txtTotalDocumento.setEditable(true);
     }
 
+    /**
+     * Se encarga de limpiar los textFiel.
+     */
     public void limpiarControles() {
         txtCodigoCompra.clear();
         txtFechaDcumento.clear();

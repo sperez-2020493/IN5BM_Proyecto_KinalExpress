@@ -286,16 +286,25 @@ public class MenuTipoProductoController implements Initializable {
         }
     }
 
+    /**
+     * Se encarga de desactivar los textFiel.
+     */
     public void desactivarControles() {
         txtCodigoTipoProducto.setEditable(false);
         txtDescripcionTipoProducto.setEditable(false);
     }
 
+    /**
+     * Se encarga de activar los textFiel.
+     */
     public void activarControles() {
         txtCodigoTipoProducto.setEditable(true);
         txtDescripcionTipoProducto.setEditable(true);
     }
 
+    /**
+     * Se encarga de limpiar los textFiel.
+     */
     public void limpiarControles() {
         txtCodigoTipoProducto.clear();
         txtDescripcionTipoProducto.clear();

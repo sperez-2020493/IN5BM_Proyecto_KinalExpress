@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.samuelperez.controller.MenuDetalleFacturaController">
+   <children>
+      <ImageView fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/MenuDetalleFactura_Fondo.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnRegresar" alignment="TOP_LEFT" contentDisplay="TOP" layoutX="1181.0" layoutY="20.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="47.0" prefWidth="73.0" style="-fx-background-color: #FF914D;" text="Rregresar">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="49.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/View_IconRegresar.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="btnAgregar" layoutX="35.0" layoutY="214.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="156.0" style="-fx-background-color: #80DA58;" text="Agregar" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <graphic>
+            <ImageView fx:id="imgAgregar" fitHeight="49.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/MenuClientes_IconAgregarUsuario.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="btnEditar" layoutX="35.0" layoutY="331.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="156.0" style="-fx-background-color: #80DA58;" text="Editar" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <graphic>
+            <ImageView fx:id="imgEditar" fitHeight="49.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/MenuClientes_IconEditarUsuario.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="btnEliminar" layoutX="1103.0" layoutY="214.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="156.0" style="-fx-background-color: #80DA58;" text="Eliminar" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <graphic>
+            <ImageView fx:id="imgEliminar" fitHeight="49.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/MenuClientes_IconEliminarUsuario.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="btnReport" layoutX="1103.0" layoutY="331.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="156.0" style="-fx-background-color: #80DA58;" text="Report" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <graphic>
+            <ImageView fx:id="imgReport" fitHeight="49.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/MenuClientes_IconReportUsuario.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <TableView fx:id="tblDetalleFactura" layoutX="216.0" layoutY="146.0" prefHeight="391.0" prefWidth="868.0">
+         <columns>
+            <TableColumn fx:id="colDeatlleFactura" minWidth="173.66" prefWidth="30.0" text="ID" />
+            <TableColumn fx:id="colPrecioUnitarioD" minWidth="177.66" prefWidth="75.0" text="PRECIO UNITARIO" />
+            <TableColumn fx:id="colCantidadD" minWidth="177.67" prefWidth="75.0" text="CANTIDAD" />
+            <TableColumn fx:id="col" minWidth="177.66" prefWidth="75.0" text="NUMERO FACTURA" />
+            <TableColumn fx:id="colCodigoClienteF" minWidth="177.67" prefWidth="97.0" text="ID PRODUCTO" />
+         </columns>
+      </TableView>
+      <GridPane layoutX="670.0" layoutY="558.0" prefHeight="83.0" prefWidth="419.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="41.0" minHeight="10.0" prefHeight="41.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="63.0" minHeight="10.0" prefHeight="42.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Label alignment="CENTER" prefHeight="25.0" prefWidth="228.0" text="NumeroFactura">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="cmbNumeroFactura" prefHeight="25.0" prefWidth="185.0" GridPane.columnIndex="1" />
+            <Label alignment="CENTER" prefHeight="25.0" prefWidth="222.0" text="ID Producto" GridPane.rowIndex="1">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="cmbCodigoProducto" prefHeight="25.0" prefWidth="185.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+         </children>
+      </GridPane>
+      <GridPane layoutX="216.0" layoutY="537.0" prefHeight="167.0" prefWidth="439.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="45.0" minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="63.0" minHeight="10.0" prefHeight="41.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="69.0" minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="69.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Label alignment="CENTER" prefHeight="25.0" prefWidth="219.0" text="ID Detalle Factura">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" prefHeight="25.0" prefWidth="200.0" text="Precio Unitario" GridPane.rowIndex="1">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="10.0" layoutY="63.0" prefHeight="25.0" prefWidth="219.0" text="Cantidad" GridPane.rowIndex="2">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtDetalleFacturaD" prefHeight="35.0" prefWidth="230.0" GridPane.columnIndex="1" />
+            <TextField fx:id="txtPresioUnitarioD" layoutX="230.0" layoutY="10.0" prefHeight="34.0" prefWidth="224.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="txtCantidadD" layoutX="230.0" layoutY="48.0" prefHeight="32.0" prefWidth="235.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>
