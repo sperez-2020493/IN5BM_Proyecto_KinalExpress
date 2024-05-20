@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import org.samuelperez.controller.MenuCargoEmpleadoController;
 import org.samuelperez.controller.MenuClientesController;
 import org.samuelperez.controller.MenuComprasController;
+import org.samuelperez.controller.MenuDetalleComprasController;
 import org.samuelperez.controller.MenuPrincipalController;
 import org.samuelperez.controller.MenuProductosController;
 import org.samuelperez.controller.MenuProgramadorController;
@@ -175,6 +176,17 @@ public class Principal extends Application {
             e.printStackTrace();
         }
     }
+
+    public void menuDetalleCompraView() {
+        try{
+            MenuDetalleComprasController MenuDetalleCompras = (MenuDetalleComprasController)cambiarEscena("MenuDetalleCompras.fxml", 1280, 720);
+            MenuDetalleCompras.setEscenarioPrincipal(this);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */

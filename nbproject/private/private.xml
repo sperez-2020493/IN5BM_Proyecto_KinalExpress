@@ -3,12 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Informatica/Desktop/Repositorio/IN5BM_Proyecto_KinalExpress/src/org/samuelperez/controller/MenuProveedoresController.java</file>
-            <file>file:/C:/Users/Informatica/Desktop/Repositorio/IN5BM_Proyecto_KinalExpress/src/org/samuelperez/bean/Compras.java</file>
-            <file>file:/C:/Users/Informatica/Desktop/Repositorio/IN5BM_Proyecto_KinalExpress/src/org/samuelperez/controller/MenuProductosController.java</file>
-            <file>file:/C:/Users/Informatica/Desktop/Repositorio/IN5BM_Proyecto_KinalExpress/src/org/samuelperez/bean/Productos.java</file>
-            <file>file:/C:/Users/Informatica/Desktop/Repositorio/IN5BM_Proyecto_KinalExpress/src/org/samuelperez/bean/TipoProducto.java</file>
-            <file>file:/C:/Users/Informatica/Desktop/Repositorio/IN5BM_Proyecto_KinalExpress/src/org/samuelperez/bean/Proveedores.java</file>
+            <file>file:/C:/Users/David%20Perez/Desktop/Repositorio%20Casa/IN5BM_Proyecto_KinalExpress/src/org/samuelperez/db/Conexion.java</file>
+            <file>file:/C:/Users/David%20Perez/Desktop/Repositorio%20Casa/IN5BM_Proyecto_KinalExpress/src/org/samuelperez/controller/MenuComprasController.java</file>
+            <file>file:/C:/Users/David%20Perez/Desktop/Repositorio%20Casa/IN5BM_Proyecto_KinalExpress/src/org/samuelperez/controller/MenuProveedoresController.java</file>
+            <file>file:/C:/Users/David%20Perez/Desktop/Repositorio%20Casa/IN5BM_Proyecto_KinalExpress/src/org/samuelperez/controller/MenuClientesController.java</file>
+            <file>file:/C:/Users/David%20Perez/Desktop/Repositorio%20Casa/IN5BM_Proyecto_KinalExpress/src/org/samuelperez/controller/MenuDetalleComprasController.java</file>
+            <file>file:/C:/Users/David%20Perez/Desktop/Repositorio%20Casa/IN5BM_Proyecto_KinalExpress/src/org/samuelperez/controller/MenuProductosController.java</file>
+            <file>file:/C:/Users/David%20Perez/Desktop/Repositorio%20Casa/IN5BM_Proyecto_KinalExpress/src/org/samuelperez/controller/MenuPrincipalController.java</file>
+            <file>file:/C:/Users/David%20Perez/Desktop/Repositorio%20Casa/IN5BM_Proyecto_KinalExpress/src/org/samuelperez/System/Principal.java</file>
+            <file>file:/C:/Users/David%20Perez/Desktop/Repositorio%20Casa/IN5BM_Proyecto_KinalExpress/src/org/samuelperez/controller/MenuProgramadorController.java</file>
         </group>
     </open-files>
 </project-private>

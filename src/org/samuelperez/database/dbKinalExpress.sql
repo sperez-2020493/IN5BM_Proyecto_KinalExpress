@@ -338,6 +338,60 @@ delimiter ;
  
 call sp_EliminarCargoEmpleado(2);
 
+-- EMPLEADOS
+delimiter $$
+create procedure sp_AgregarEmpleados(in codigoEmpleado int, in nombresEmpleado varchar(50), in apellidosEmpleado varchar(50), in sueldo decimal(10,2), in direccion varchar(150), in turno varchar(15), in codigoCargoEmpleado int)
+begin 
+	insert into Empleados(codigoEmpleado, nombresEmpleado, apellidosEmpleado, sueldo, direccion, turno, codigoCargoEmpleado)
+    values (codigoEmpleado, nombresEmpleado, apellidosEmpleado, sueldo, direccion, turno, codigoCargoEmpleado);
+end $$
+delimiter ;
+
+call sp_AgregarEmpleados(1,'Samuel','Perez','5000','zona 18','Matutino',1);
+
+
+delimiter $$
+create procedure sp_ListarEmpleados()
+begin 
+	select * from Empleados;
+end $$
+delimiter ;
+
+call sp_ListarEmpleados();
+
+delimiter $$
+create procedure sp_BuscarEmpleados(in codigoEmpleado int)
+begin 
+	select * from Empleados where Empleados.codigoEmpleado = codigoEmpleado;
+end $$
+delimiter ;
+
+call sp_BuscarEmpleados(1);
+
+delimiter $$
+create procedure sp_ActualizarEmpleados(in codigoEmpleado int, in nombresEmpleado varchar(50), in apellidosEmpleado varchar(50), in sueldo decimal(10,2), in direccion varchar(150), in turno varchar(15), in codigoCargoEmpleado int)
+begin 
+	update Empleados
+    set	
+		Empleados.nombresEmpleado = nombresEmpleado,
+		Empleados.apellidosEmpleado = apellidosEmpleado,
+        Empleados.sueldo = sueldo,
+        Empleados.direccion = direccion,
+        Empleados.turno = Empleados.turno,
+        Empleados.codigoCargoEmpleado = codigoCargoEmpleado
+	where
+		Empleados.codigoEmpleado = codigoEmpleado;
+end $$
+delimiter ;
+
+call sp_ActualizarEmpleados(1,'Samuel Alexander','Perez Cap','5000','zona 18','Matutino',1);
+
+delimiter $$
+create procedure sp_EliminarEmpleados(in codigoEmpleado int)
+begin 
+	delete from Empleados where Empleados.codigoEmpleado = codigoEmpleado;
+end $$
+delimiter ;
 
 -- PROVEDORES
 delimiter $$
@@ -348,7 +402,7 @@ begin
 end $$
 delimiter ;
 
-call sp_AgregarProveedores(1,'4587152','Carlos Luis','Tubac Gomez','Mi Casa 1 zona 3','Pepsico Iberia Servicios Centrales','5478-5546','PePsico.com');
+call sp_AgregarProveedores(1,'4587152','Carlos Luis','Perez Gomez','Mi Casa 1 zona 3','Pepsico Iberia Servicios Centrales','5478-5546','PePsico.com');
 call sp_AgregarProveedores(2,'4587152','Carlos Luis','Tubac Gomez','Mi Casa 1 zona 3','Pepsico Iberia Servicios Centrales','5478-5546','PePsico.com');
 
 

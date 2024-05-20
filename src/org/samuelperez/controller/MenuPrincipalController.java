@@ -88,6 +88,7 @@ public class MenuPrincipalController implements Initializable {
         if(event.getSource() == btnMenuCompras){
             escenarioPrincipal.menuComprasView();
         }
+
     }
     
 }

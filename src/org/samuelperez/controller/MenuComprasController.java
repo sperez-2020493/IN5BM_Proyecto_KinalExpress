@@ -46,6 +46,9 @@ public class MenuComprasController implements Initializable {
     private Button btnAgregar;
 
     @FXML
+    private Button btnDetalleCompra;
+    
+    @FXML
     private ImageView imgAgregar;
 
     @FXML
@@ -309,6 +312,9 @@ public class MenuComprasController implements Initializable {
     public void handleButtonAction(ActionEvent event) {
         if (event.getSource() == btnRegresar) {
             escenarioPrincipal.menuPrincipalView();
+        }
+        if (event.getSource() == btnDetalleCompra) {
+            escenarioPrincipal.menuDetalleCompraView();
         }
     }
 
