@@ -1,4 +1,8 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package org.samuelperez.controller;
 
 import java.net.URL;
@@ -7,7 +11,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -19,9 +22,24 @@ import org.samuelperez.system.Principal;
  * Carnet: 2020493  Grado:IN5BM
  */
 
-public class MenuDetalleFacturaController implements Initializable {
+public class MenuEmailProveedorController implements Initializable {
     
     private Principal escenarioPrincipal;
+        
+    @FXML
+    private TableView tblTipoProducto;
+
+    @FXML
+    private TableColumn colEmailProveedorE;
+
+    @FXML
+    private TableColumn colEmailE;
+
+    @FXML
+    private TableColumn colDescripcionE;
+
+    @FXML
+    private TableColumn colProveedoresE;
 
     @FXML
     private Button btnRegresar;
@@ -51,39 +69,17 @@ public class MenuDetalleFacturaController implements Initializable {
     private ImageView imgReport;
 
     @FXML
-    private TableView tblDetalleFactura;
+    private TextField txtCodigoProveedor;
 
     @FXML
-    private TableColumn colDeatlleFactura;
+    private TextField txtDescripcion;
 
     @FXML
-    private TableColumn colPrecioUnitarioD;
+    private TextField txtEmail;
 
     @FXML
-    private TableColumn colCantidadD;
+    private TextField txtCodigoEmailProveedor;
 
-    @FXML
-    private TableColumn col;
-
-    @FXML
-    private TableColumn colCodigoClienteF;
-
-    @FXML
-    private ComboBox cmbNumeroFactura;
-
-    @FXML
-    private ComboBox cmbCodigoProducto;
-
-    @FXML
-    private TextField txtDetalleFacturaD;
-
-    @FXML
-    private TextField txtPresioUnitarioD;
-
-    @FXML
-    private TextField txtCantidadD;
-
-   
     /**
      * Se encarga de devolver el escenario.
      * 
@@ -117,6 +113,5 @@ public class MenuDetalleFacturaController implements Initializable {
         if(event.getSource() == btnRegresar){
             escenarioPrincipal.menuPrincipalView();
         }
-    } 
-    
+    }
 }

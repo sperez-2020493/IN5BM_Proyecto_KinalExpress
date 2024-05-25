@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package org.samuelperez.controller;
 
 import java.net.URL;
@@ -30,23 +26,34 @@ import org.samuelperez.bean.Productos;
 import org.samuelperez.db.Conexion;
 import org.samuelperez.system.Principal;
 
+
 /**
- *
- * @author David Perez
+ * @author Nombre: Samuel Alexander Perez Cap
+ * Carnet: 2020493  Grado:IN5BM
  */
+
 public class MenuDetalleComprasController implements Initializable {
 
+    // Referencia al escenario principal de la aplicación
     private Principal escenarioPrincipal;
+
+    // Lista observable para almacenar objetos de tipo 'DetalleCompra'
     private ObservableList<DetalleCompra> listaDetalleCompra;
+
+    // Lista observable para almacenar objetos de tipo 'Producto'
     private ObservableList<Productos> listaProductos;
+
+    // Lista observable para almacenar objetos de tipo 'Compras'
     private ObservableList<Compras> listaCompras;
 
+    // Enumeración para representar las diferentes operaciones que se pueden realizar
     private enum operaciones {
         AGREGAR, ELIMINAR, EDITAR, ACTUALIZAR, CANCELAR, NINGUNO
     };
 
     private MenuDetalleComprasController.operaciones tipoDeOperaciones = operaciones.NINGUNO;
 
+    // Botones, tabla, columnas, combox e imágenes de la interfaz de la vista 
     @FXML
     private Button btnRegresar;
 
@@ -125,6 +132,10 @@ public class MenuDetalleComprasController implements Initializable {
         this.escenarioPrincipal = escenarioPrincipal;
      }
 
+    /**
+     * El @Override se encarga de cargar el metodo CargarDatos llamando el
+     * metodo en el y los combox donde estan las Fk.
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         cargarDatos();
@@ -143,6 +154,10 @@ public class MenuDetalleComprasController implements Initializable {
         }
     }
 
+    /**
+     * El metodo se encarga de cargar los datos de la tabla en la vista, segun
+     * el nombre de cada columna.
+     */
     public void cargarDatos() {
         tblDetalleCompras.setItems(getDetalleCompra());
         colDetalleCompraD.setCellValueFactory(new PropertyValueFactory<DetalleCompra, Integer>("codigoDetalleCompra"));
@@ -152,6 +167,11 @@ public class MenuDetalleComprasController implements Initializable {
         colNumeroProductoD.setCellValueFactory(new PropertyValueFactory<DetalleCompra, Integer>("numeroDocumento"));
     }
 
+    /**
+     * El metodo Actualiza los campos de los txt seleccionando la tabla a la que
+     * se encarga de mostrar El procedimiento se llama cuando se selecciona un
+     * elemento de la tabla.
+     */
     public void seleccionarElemento() {
         txtCodigoDetalleC.setText(String.valueOf(((DetalleCompra) tblDetalleCompras.getSelectionModel().getSelectedItem()).getCodigoDetalleCompra()));
         txtCostoUnitario.setText(String.valueOf(((DetalleCompra) tblDetalleCompras.getSelectionModel().getSelectedItem()).getCostoUnitario()));
@@ -160,6 +180,13 @@ public class MenuDetalleComprasController implements Initializable {
         cmbNumeroDocumento.getSelectionModel().select(buscarCompra(((DetalleCompra) tblDetalleCompras.getSelectionModel().getSelectedItem()).getNumeroDocumento()));
     }
 
+    /**
+     * Este método se utiliza para buscar un producto en la base de datos realizando una conexion al Procedimiento almacenado
+     * encargado de la busqueda de los Productos.
+     * 
+     * @param codigoProducto El código del producto a buscar.
+     * @return El producto encontrado, o null si no se encuentra ningún producto.
+    */
     public Productos buscarProducto(String codigoProducto) {
         Productos resultado = null;
         try {
@@ -183,6 +210,13 @@ public class MenuDetalleComprasController implements Initializable {
         return resultado;
     }
 
+    /**
+    * Este método se utiliza para buscar una compra en la base de datos realizando una conexion al producto
+    * almacenado que se encarga de buscar.
+    * 
+    * @param numeroDocumento El número de documento de la compra a buscar.
+    * @return La compra encontrada, o null si no se encuentra ninguna compra.
+    */
     public Compras buscarCompra(int numeroDocumento) {
         Compras resultado = null;
         try {
@@ -201,6 +235,13 @@ public class MenuDetalleComprasController implements Initializable {
         return resultado;
     }
 
+    /**
+     * El metodo realizar la conexion con el procedimiento almacenado que se
+     * encarga de listar las informacion de la tabla y todas sus tuplas, esta
+     * funciona con una ArrayList para poder manejar los datos.
+     * 
+     * @return una lista que se puede observar de los Productos.
+     */
     public ObservableList<Productos> getProductos() {
         ArrayList<Productos> lista = new ArrayList<Productos>();
         ResultSet resultado = null;
@@ -228,6 +269,13 @@ public class MenuDetalleComprasController implements Initializable {
 
     }
 
+    /**
+     * El metodo realizar la conexion con el procedimiento almacenado que se
+     * encarga de listar las informacion de la tabla y todas sus tuplas, esta
+     * funciona con una ArrayList para poder manejar los datos.
+     * 
+     * @return una lista que se puede observar de las Compras.
+     */
     public ObservableList<Compras> getCompras() {
         ArrayList<Compras> lista = new ArrayList<>();
         ResultSet resultado = null;
@@ -249,6 +297,13 @@ public class MenuDetalleComprasController implements Initializable {
 
     }
 
+    /**
+     * El metodo realizar la conexion con el procedimiento almacenado que se
+     * encarga de listar las informacion de la tabla y todas sus tuplas, esta
+     * funciona con una ArrayList para poder manejar los datos.
+     * 
+     * @return una lista que se puede observar de los Detalle Compra.
+     */
     public ObservableList<DetalleCompra> getDetalleCompra() {
         ArrayList<DetalleCompra> lista = new ArrayList<DetalleCompra>();
         ResultSet resultado = null;
@@ -272,6 +327,13 @@ public class MenuDetalleComprasController implements Initializable {
 
     }
 
+    /**
+     * El metodk agregar tiene la funcion de realizar una nueva tupla en la
+     * tabla de la base de datos, esta tiene un switch con 2 casos, el caso
+     * ninguno resive los datos y el tro caso es el que llama al metodo guardar
+     * para guardar los datos de los txt y cargar la vista para mostrar la tupla
+     * agregada.
+     */
     public void agregar() {
         switch (tipoDeOperaciones) {
             case NINGUNO:
@@ -299,6 +361,11 @@ public class MenuDetalleComprasController implements Initializable {
         }
     }
 
+    /**
+     * El metodo Guardar es el que se encarga de realizar la conexion con el
+     * procedimiento almacenado que guarda los datos enviados por el usuario en
+     * los txt como una nueva tupla en la tabla.
+     */
     public void guardar() {
         DetalleCompra registro = new DetalleCompra();
         registro.setCodigoDetalleCompra(Integer.parseInt(txtCodigoDetalleC.getText()));
@@ -320,6 +387,11 @@ public class MenuDetalleComprasController implements Initializable {
         }
     }
 
+    /**
+     * El metodo eliminar se encarga de hacer la conexion al procedimiento
+     * almacenado encargado de eliminar una tupla, sabiendo el ID que identifica
+     * dicha tupla seleccionada en la tabla de la vista.
+     */
     public void eliminar() {
         switch (tipoDeOperaciones) {
             case ACTUALIZAR:
@@ -354,6 +426,13 @@ public class MenuDetalleComprasController implements Initializable {
         }
     }
 
+    /**
+     * El metodo editar se encaga de llamar al metodo llamado actualizar, este
+     * se encuentra en un switch con 2 casos. El caso ninguno es en el cual el
+     * usuario no haya seleccionado alguna tupla para editar, y el caso
+     * Actualizar es el encargado de realizar la actualizacion y llamar al
+     * metedo que se encarga de esta.
+     */
     public void editar() {
         switch (tipoDeOperaciones) {
             case NINGUNO:
@@ -388,6 +467,11 @@ public class MenuDetalleComprasController implements Initializable {
 
     }
 
+    /**
+     * El metodo actualizar se encarga de realizar la conexion al procedimiento
+     * almacenado que se encarga de Actualizar la tupla seleccionada de la tabla
+     * de la base de datos.
+     */
     public void actualizar() {
         try {
             PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_ActualizarDetalleCompra(?,?,?,?,?)}");
@@ -408,6 +492,10 @@ public class MenuDetalleComprasController implements Initializable {
         }
     }
 
+    /**
+     * Se encarga de cancelar el metodo de editar y reiniciar la vista al
+     * precionar el boton Report, la vista vuelve a su estado de inicio.
+     */
     public void cancelar() {
         desactivarControles();
         limpiarControles();

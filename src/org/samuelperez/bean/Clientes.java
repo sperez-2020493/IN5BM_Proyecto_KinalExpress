@@ -5,6 +5,7 @@ package org.samuelperez.bean;
  * Carnet: 2020493  Grado:IN5BM
  */
 public class Clientes {
+    
     /**
     *Los Atrbutos de la clase.
     */

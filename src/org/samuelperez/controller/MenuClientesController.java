@@ -1,7 +1,4 @@
-/**
- * @author Nombre: Samuel Alexander Perez Cap
- * Carnet: 2020493  Grado:IN5BM
- */
+
 package org.samuelperez.controller;
 
 import java.net.URL;
@@ -27,18 +24,31 @@ import org.samuelperez.bean.Clientes;
 import org.samuelperez.db.Conexion;
 import org.samuelperez.system.Principal;
 
+
+
+/**
+ * @author Nombre: Samuel Alexander Perez Cap
+ * Carnet: 2020493  Grado:IN5BM
+ */
+
 /**
  * Este controlador del Menu Clientes tiene una clase el cual se encarga de
  * manejar y controlar las acciones y eventos del menu clientes.
  */
 public class MenuClientesController implements Initializable {
 
-    private Principal escenarioPrincipal; // El escenario principal de la Aplicacion.
+    // Referencia al escenario principal de la aplicación
+    private Principal escenarioPrincipal;
+
+    // Lista observable para almacenar objetos de tipo 'Cliente'
     private ObservableList<Clientes> listaClientes;
 
+    // Enumeración para representar las diferentes operaciones que se pueden realizar
     private enum operaciones {
         AGREGAR, ELIMINAR, EDITAR, ACTUALIZAR, CANCELAR, NINGUNO
     };
+    
+    // Variable para almacenar la operación actual
     private operaciones tipoDeOperaciones = operaciones.NINGUNO;
 
     /*
@@ -134,6 +144,10 @@ public class MenuClientesController implements Initializable {
         this.escenarioPrincipal = escenarioPrincipal;
     }
 
+    /**
+     * El @Override se encarga de cargar el metodo CargarDatos llamando el
+     * metodo en el.
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         cargarDatos();
@@ -165,6 +179,11 @@ public class MenuClientesController implements Initializable {
 
     }
 
+    /**
+     * El metodo Actualiza los campos de los txt seleccionando la tabla a la que
+     * se encarga de mostrar El procedimiento se llama cuando se selecciona un
+     * elemento de la tabla.
+     */
     public void seleccionarElemento() {
         txtCodigoCliente.setText(String.valueOf(((Clientes) tblClientes.getSelectionModel().getSelectedItem()).getCodigoCliente()));
         txtNombresCliente.setText(((Clientes) tblClientes.getSelectionModel().getSelectedItem()).getNombresCliente());
@@ -205,6 +224,13 @@ public class MenuClientesController implements Initializable {
 
     }
 
+    /**
+     * El metodk agregar tiene la funcion de realizar una nueva tupla en la
+     * tabla de la base de datos, esta tiene un switch con 2 casos, el caso
+     * ninguno resive los datos y el tro caso es el que llama al metodo guardar
+     * para guardar los datos de los txt y cargar la vista para mostrar la tupla
+     * agregada.
+     */
     public void Agregar() {
         switch (tipoDeOperaciones) {
             case NINGUNO:
@@ -232,6 +258,11 @@ public class MenuClientesController implements Initializable {
         }
     }
 
+    /**
+     * El metodo Guardar es el que se encarga de realizar la conexion con el
+     * procedimiento almacenado que guarda los datos enviados por el usuario en
+     * los txt como una nueva tupla en la tabla.
+     */
     public void guardar() {
         Clientes registro = new Clientes();
         registro.setCodigoCliente(Integer.parseInt(txtCodigoCliente.getText()));
@@ -258,6 +289,11 @@ public class MenuClientesController implements Initializable {
         }
     }
 
+    /**
+     * El metodo eliminar se encarga de hacer la conexion al procedimiento
+     * almacenado encargado de eliminar una tupla, sabiendo el ID que identifica
+     * dicha tupla seleccionada en la tabla de la vista.
+     */
     public void eliminar() {
         switch (tipoDeOperaciones) {
             case ACTUALIZAR:
@@ -292,6 +328,13 @@ public class MenuClientesController implements Initializable {
         }
     }
 
+    /**
+     * El metodo editar se encaga de llamar al metodo llamado actualizar, este
+     * se encuentra en un switch con 2 casos. El caso ninguno es en el cual el
+     * usuario no haya seleccionado alguna tupla para editar, y el caso
+     * Actualizar es el encargado de realizar la actualizacion y llamar al
+     * metedo que se encarga de esta.
+     */
     public void editar() {
         switch (tipoDeOperaciones) {
             case NINGUNO:
@@ -326,6 +369,28 @@ public class MenuClientesController implements Initializable {
 
     }
 
+    
+    /**
+     * Se encarga de cancelar el metodo de editar y reiniciar la vista al
+     * precionar el boton Report, la vista vuelve a su estado de inicio.
+     */
+    public void cancelar() {
+        desactivarControles();
+        limpiarControles();
+        btnEditar.setText("Editar");
+        btnReport.setText("Reporte");
+        btnAgregar.setDisable(false);
+        btnEliminar.setDisable(false);
+        imgEditar.setImage(new Image("/org/samuelperez/images/MenuClientes_IconEditarUsuario.png"));
+        imgReport.setImage(new Image("/org/samuelperez/images/MenuClientes_IconReportUsuario.png"));
+        tipoDeOperaciones = operaciones.NINGUNO;
+    }
+    
+    /**
+     * El metodo actualizar se encarga de realizar la conexion al procedimiento
+     * almacenado que se encarga de Actualizar la tupla seleccionada de la tabla
+     * de la base de datos.
+     */
     public void actualizar() {
         try {
             PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_ActualizarClientes(?,?,?,?,?,?,?)}");

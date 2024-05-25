@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package org.samuelperez.controller;
 
 import java.net.URL;
@@ -30,9 +26,10 @@ import org.samuelperez.db.Conexion;
 import org.samuelperez.system.Principal;
 
 /**
- *
- * @author David Perez
+ * @author Nombre: Samuel Alexander Perez Cap
+ * Carnet: 2020493  Grado:IN5BM
  */
+
 public class MenuFacturaController implements Initializable {
 
     private Principal escenarioPrincipal;

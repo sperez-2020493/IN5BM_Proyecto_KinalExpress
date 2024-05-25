@@ -20,7 +20,8 @@ import org.samuelperez.system.Principal;
  * La Clase se encarga de las acciones y eventos del menú principal.
 */
 public class MenuProgramadorController implements Initializable {
-        private Principal escenarioPrincipal;
+        
+    private Principal escenarioPrincipal;
         
     /**
      * Se encarga de devolver el escenario.

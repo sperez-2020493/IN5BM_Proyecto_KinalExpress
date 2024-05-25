@@ -168,5 +168,10 @@
             <TextField fx:id="txtPaginaWebPorveedor" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>
       </GridPane>
+      <Button fx:id="btnEmailProveedor" layoutX="1061.0" layoutY="626.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="156.0" style="-fx-background-color: #80DA58;" text="Email Proveedor" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

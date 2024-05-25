@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package org.samuelperez.controller;
 
 import java.net.URL;
@@ -28,20 +24,27 @@ import org.samuelperez.db.Conexion;
 import org.samuelperez.system.Principal;
 
 /**
- *
- * @author informatica
+ * @author Nombre: Samuel Alexander Perez Cap
+ * Carnet: 2020493  Grado:IN5BM
  */
+
 public class MenuCargoEmpleadoController implements Initializable {
 
+    // Referencia al escenario principal de la aplicación
     private Principal escenarioPrincipal;
+    
+    // Lista observable para almacenar objetos de tipo 'Cargo Empleado'
     private ObservableList<CargoEmpleado> listaCargoEmpleado;
 
+    // Enumeración para representar las diferentes operaciones que se pueden realizar
     private enum operaciones {
         AGREGAR, ELIMINAR, EDITAR, ACTUALIZAR, CANCELAR, NINGUNO
     };
 
+    // Variable para almacenar la operación actual
     private operaciones tipoDeOperaciones = operaciones.NINGUNO;
     
+    // Botones,tabla, columnas e imágenes de la interfaz de la vista 
     @FXML
     private Button btnRegresar;
 
@@ -108,6 +111,10 @@ public class MenuCargoEmpleadoController implements Initializable {
         this.escenarioPrincipal = escenarioPrincipal;
     }
 
+    /**
+     * El @Override se encarga de cargar el metodo CargarDatos llamando el
+     * metodo en el.
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         cargarDatos();
@@ -124,6 +131,10 @@ public class MenuCargoEmpleadoController implements Initializable {
         }
     }
 
+    /**
+     * El metodo se encarga de cargar los datos de la tabla en la vista, segun
+     * el nombre de cada columna.
+     */
     public void cargarDatos() {
         tblCargoEmpleado.setItems(getCargoEmpleado());
         colCargoEmpleadoC.setCellValueFactory(new PropertyValueFactory<CargoEmpleado, Integer>("codigoCargoEmpleado"));
@@ -131,12 +142,24 @@ public class MenuCargoEmpleadoController implements Initializable {
         colDescripcionC.setCellValueFactory(new PropertyValueFactory<CargoEmpleado, String>("descripcionCargo"));
     }
 
+    /**
+     * El metodo Actualiza los campos de los txt seleccionando la tabla a la que
+     * se encarga de mostrar El procedimiento se llama cuando se selecciona un
+     * elemento de la tabla.
+     */
     public void seleccionarElemento() {
         txtCodigoCargoEmpleado.setText(String.valueOf(((CargoEmpleado) tblCargoEmpleado.getSelectionModel().getSelectedItem()).getCodigoCargoEmpleado()));
         txtNombreCargoEmpleado.setText(((CargoEmpleado) tblCargoEmpleado.getSelectionModel().getSelectedItem()).getNombreCargo());
         txtDescripcionCargoEmpleado.setText(((CargoEmpleado) tblCargoEmpleado.getSelectionModel().getSelectedItem()).getDescripcionCargo());
     }
 
+    /**
+     * El metodo realizar la conexion con el procedimiento almacenado que se
+     * encarga de listar las informacion de la tabla y todas sus tuplas, esta
+     * funciona con una ArrayList para poder manejar los datos.
+     * 
+     * @return una lista que se puede observar de los CargoEmpleado.
+     */
     public ObservableList<CargoEmpleado> getCargoEmpleado() {
         ArrayList<CargoEmpleado> lista = new ArrayList<>();
         ResultSet resultado = null;
@@ -156,6 +179,13 @@ public class MenuCargoEmpleadoController implements Initializable {
 
     }
 
+    /**
+     * El metodk agregar tiene la funcion de realizar una nueva tupla en la
+     * tabla de la base de datos, esta tiene un switch con 2 casos, el caso
+     * ninguno resive los datos y el tro caso es el que llama al metodo guardar
+     * para guardar los datos de los txt y cargar la vista para mostrar la tupla
+     * agregada.
+     */
     public void agregar() {
         switch (tipoDeOperaciones) {
             case NINGUNO:
@@ -183,6 +213,12 @@ public class MenuCargoEmpleadoController implements Initializable {
         }
     }
 
+    
+    /**
+     * El metodo Guardar es el que se encarga de realizar la conexion con el
+     * procedimiento almacenado que guarda los datos enviados por el usuario en
+     * los txt como una nueva tupla en la tabla.
+     */
     public void guardar() {
         CargoEmpleado registro = new CargoEmpleado();
         registro.setCodigoCargoEmpleado(Integer.parseInt(txtCodigoCargoEmpleado.getText()));
@@ -201,6 +237,11 @@ public class MenuCargoEmpleadoController implements Initializable {
         }
     }
     
+    /**
+     * El metodo eliminar se encarga de hacer la conexion al procedimiento
+     * almacenado encargado de eliminar una tupla, sabiendo el ID que identifica
+     * dicha tupla seleccionada en la tabla de la vista.
+     */
     public void eliminar() {
         switch (tipoDeOperaciones) {
             case ACTUALIZAR:
@@ -235,6 +276,13 @@ public class MenuCargoEmpleadoController implements Initializable {
         }
     }
     
+    /**
+     * El metodo editar se encaga de llamar al metodo llamado actualizar, este
+     * se encuentra en un switch con 2 casos. El caso ninguno es en el cual el
+     * usuario no haya seleccionado alguna tupla para editar, y el caso
+     * Actualizar es el encargado de realizar la actualizacion y llamar al
+     * metedo que se encarga de esta.
+     */
     public void editar() {
         switch (tipoDeOperaciones) {
             case NINGUNO:
@@ -269,6 +317,10 @@ public class MenuCargoEmpleadoController implements Initializable {
 
     }
 
+    /**
+     * Se encarga de cancelar el metodo de editar y reiniciar la vista al
+     * precionar el boton Report, la vista vuelve a su estado de inicio.
+     */
     public void cancelar() {
         desactivarControles();
         limpiarControles();
@@ -281,6 +333,12 @@ public class MenuCargoEmpleadoController implements Initializable {
         tipoDeOperaciones = operaciones.NINGUNO;
     }
 
+    
+    /**
+     * El metodo actualizar se encarga de realizar la conexion al procedimiento
+     * almacenado que se encarga de Actualizar la tupla seleccionada de la tabla
+     * de la base de datos.
+     */
     public void actualizar() {
         try {
             PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_ActualizarCargoEmpleado(?,?,?)}");

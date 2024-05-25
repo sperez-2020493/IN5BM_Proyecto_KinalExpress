@@ -106,7 +106,7 @@ create table Factura(
 );
 
 create table DetalleFactura(
-	codigoDetalleFacturFactura int not null,
+	codigoDetalleFactura int not null,
     precioUnitario decimal(10,2),
     cantidad int,
     numeroFactura int,
@@ -639,18 +639,28 @@ for each row
 begin
 	declare total decimal(10,2);
     declare cantidad int;
-    
     set total = new.costoUnitario * new.cantidad;
-
 	update Productos
 	set precioUnitario = total * 0.40,
 		precioDocena  = total * 0.35 * 12,
         precioMayor = total * 0.25
     where Productos.codigoProducto = new.codigoProducto;
-    
-	update Productos
+ 	update Productos
         set Productos.existencia = Productos.existencia - new.cantidad
 	where Productos.codigoProducto = new.codigoProducto;
+end $$
+delimiter ;
+
+delimiter $$
+create trigger tr_PrecioUnitario
+after insert on DetalleCompra
+for each row
+begin
+	declare precioP decimal(10,2);
+    set precioP = (select precioUnitario from Productos where codigoProducto = new.codigoProducto);
+    update DetalleFactura
+    set DetalleFactura.precioUnitario = precioP
+    where DetalleFactura.codigoProducto = NEW.codigoProducto;
 end $$
 delimiter ;
 
@@ -660,34 +670,13 @@ after insert on DetalleCompra
 for each row
 begin
     declare total decimal(10,2);
-    
-    select sum(costoUnitario * cantidad) into total from DetalleCompra 
+     select sum(costoUnitario * cantidad) into total from DetalleCompra 
     where numeroDocumento = NEW.numeroDocumento;
-    
     update Compras 
 		set totalDocumento = total 
 	where numeroDocumento = NEW.numeroDocumento;
 end $$
 delimiter ;
-
-
-
-delimiter $$
-create trigger tr_PrecioUnitario
-after insert on DetalleCompra
-for each row
-begin
-
-	declare precioP decimal(10,2);
-    
-    set precioP = (select precioUnitario from Productos where codigoProducto = new.codigoProducto);
-    
-    update DetalleFactura
-    set DetalleFactura.precioUnitario = precioP
-    where DetalleFactura.codigoProducto = NEW.codigoProducto;
-end $$
-delimiter ;
-
 
 delimiter $$
 create trigger tr_TotalFactura
@@ -695,11 +684,9 @@ after update on DetalleFactura
 for each row
 begin
 	declare totalFactura decimal(10,2);
-    
-    select sum(precioUnitario * cantidad) into totalFactura from DetalleFactura
+     select sum(precioUnitario * cantidad) into totalFactura from DetalleFactura
     where numeroFactura = new.numeroFactura;
-    
-    update Factura
+      update Factura
 		set Factura.totalFactura = totalFactura
 	where Factura.numeroFactura = new.numeroFactura;
 end $$
