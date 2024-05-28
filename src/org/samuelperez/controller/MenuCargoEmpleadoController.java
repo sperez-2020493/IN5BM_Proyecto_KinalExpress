@@ -49,6 +49,9 @@ public class MenuCargoEmpleadoController implements Initializable {
     private Button btnRegresar;
 
     @FXML
+    private Button btnEmpleados;
+    
+    @FXML
     private Button btnAgregar;
 
     @FXML
@@ -128,6 +131,9 @@ public class MenuCargoEmpleadoController implements Initializable {
     public void handleButtonAction(ActionEvent event) {
         if (event.getSource() == btnRegresar) {
             escenarioPrincipal.menuPrincipalView();
+        }
+        if (event.getSource() == btnEmpleados) {
+            escenarioPrincipal.menuEmpleadosView();
         }
     }
 

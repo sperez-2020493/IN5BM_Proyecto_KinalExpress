@@ -92,6 +92,7 @@ public class MenuPrincipalController implements Initializable {
         if(event.getSource() == btnMenuFactura){
             escenarioPrincipal.menuFacturaView();
         }
+
     }
     
 }

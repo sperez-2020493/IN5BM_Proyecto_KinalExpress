@@ -17,6 +17,7 @@ import org.samuelperez.controller.MenuComprasController;
 import org.samuelperez.controller.MenuDetalleComprasController;
 import org.samuelperez.controller.MenuDetalleFacturaController;
 import org.samuelperez.controller.MenuEmailProveedorController;
+import org.samuelperez.controller.MenuEmpleadosController;
 import org.samuelperez.controller.MenuFacturaController;
 import org.samuelperez.controller.MenuPrincipalController;
 import org.samuelperez.controller.MenuProductosController;
@@ -215,6 +216,16 @@ public class Principal extends Application {
         try{
             MenuEmailProveedorController MenuEmail = (MenuEmailProveedorController)cambiarEscena("MenuEmailProveedor.fxml", 1280, 720);
             MenuEmail.setEscenarioPrincipal(this);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public void menuEmpleadosView() {
+        try{
+            MenuEmpleadosController MenuEmpleado = (MenuEmpleadosController)cambiarEscena("MenuEmpleados.fxml", 1280, 720);
+            MenuEmpleado.setEscenarioPrincipal(this);
         }catch(Exception e){
             System.out.println(e.getMessage());
             e.printStackTrace();

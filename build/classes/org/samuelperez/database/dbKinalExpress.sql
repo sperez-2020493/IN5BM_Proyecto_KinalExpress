@@ -652,6 +652,19 @@ end $$
 delimiter ;
 
 delimiter $$
+create trigger tr_PrecioUnitario
+after insert on DetalleCompra
+for each row
+begin
+	declare precioP decimal(10,2);
+    set precioP = (select precioUnitario from Productos where codigoProducto = new.codigoProducto);
+    update DetalleFactura
+    set DetalleFactura.precioUnitario = precioP
+    where DetalleFactura.codigoProducto = NEW.codigoProducto;
+end $$
+delimiter ;
+
+delimiter $$
 create trigger tr_TotalDocumento
 after insert on DetalleCompra
 for each row
@@ -662,19 +675,6 @@ begin
     update Compras 
 		set totalDocumento = total 
 	where numeroDocumento = NEW.numeroDocumento;
-end $$
-delimiter ;
-
-delimiter $$
-create trigger tr_PrecioUnitario
-after insert on DetalleCompra
-for each row
-begin
-	declare precioP decimal(10,2);
-    set precioP = (select precioUnitario from Productos where codigoProducto = new.codigoProducto);
-    update DetalleFactura
-    set DetalleFactura.precioUnitario = precioP
-    where DetalleFactura.codigoProducto = NEW.codigoProducto;
 end $$
 delimiter ;
 
