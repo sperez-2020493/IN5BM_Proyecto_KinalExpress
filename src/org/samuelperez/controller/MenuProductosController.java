@@ -346,7 +346,7 @@ public class MenuProductosController implements Initializable {
     }
 
     /**
-     * El metodk agregar tiene la funcion de realizar una nueva tupla en la
+     * El metodo agregar tiene la funcion de realizar una nueva tupla en la
      * tabla de la base de datos, esta tiene un switch con 2 casos, el caso
      * ninguno resive los datos y el tro caso es el que llama al metodo guardar
      * para guardar los datos de los txt y cargar la vista para mostrar la tupla
@@ -447,7 +447,7 @@ public class MenuProductosController implements Initializable {
                     }
 
                 } else {
-                    JOptionPane.showMessageDialog(null, "Debe seleccionar Un Proveedor para Eliminar");
+                    JOptionPane.showMessageDialog(null, "Debe seleccionar Un Producto para Eliminar");
                 }
         }
     }

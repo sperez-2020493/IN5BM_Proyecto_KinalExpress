@@ -289,7 +289,7 @@ public class MenuProveedoresController implements Initializable {
             procedimiento.setString(7, registro.getContactoPrincipal());
             procedimiento.setString(8, registro.getPaginaWeb());
             procedimiento.execute();
-            Proveedores.add(registro);
+            listaProveedores.add(registro);
 
         } catch (Exception e) {
             e.printStackTrace();

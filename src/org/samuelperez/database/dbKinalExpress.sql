@@ -26,6 +26,27 @@ create table Proveedores(
 	primary key PK_codigoProveedor(codigoProveedor)
 );
 
+create table EmailProveedor(
+	codigoEmailProveedor int not null,
+    emailProveedor varchar(50),
+    descripcion varchar(100),
+    codigoProveedor int,
+    primary key PK_EmailProveedor(codigoEmailProveedor),
+    constraint FK_EmailProveedor_Proveedores foreign key EmailProveedor(codigoProveedor)
+		references Proveedores(codigoProveedor) on delete cascade
+);
+
+create table TelefonoProveedor(
+	codigoTelefonoProveedor int not null,
+    numeroPrincipal varchar(8),
+    numeroSecundario varchar(8),
+    observaciones varchar(45),
+    codigoProveedor int,
+    primary key PK_TelefonoProveedor(codigoTelefonoProveedor),
+    constraint FK_TelefonoProveedor_Proveedores foreign key TelefonoProveedor(codigoProveedor)
+		references Proveedores(codigoProveedor) on delete cascade
+);
+
 create table TipoProducto(
 	codigoTipoProducto int,
 	descripcion varchar(45),
@@ -464,6 +485,106 @@ delimiter ;
  
 call sp_EliminarProveedores(2);
 
+-- Email Proveedor
+
+delimiter $$
+create procedure sp_AgregarEmailProveedor(in codigoEmailProveedor int, in emailProveedor varchar(50), in descripcion varchar(100), in codigoProveedor int)
+begin
+	insert into EmailProveedor(codigoEmailProveedor, emailProveedor, descripcion, codigoProveedor)
+    values(codigoEmailProveedor, emailProveedor, descripcion, codigoProveedor);
+end $$
+delimiter ;
+
+call sp_AgregarEmailProveedor(1,'PepsicoGT@gmail.com','Correo de cadena de suministros',1);
+
+delimiter $$
+create procedure sp_ListarEmailProveedor()
+begin
+	select * from EmailProveedor;
+end $$
+delimiter ;
+
+call sp_ListarEmailProveedor;
+
+delimiter $$
+create procedure sp_BuscarEmailProveedor(in codigoEmailProveedor int)
+begin
+	select*from EmailProveedor where EmailProveedor.codigoEmailProveedor = codigoEmailProveedor;
+end $$
+delimiter ;
+
+call sp_BuscarEmailProveedor(1);
+
+delimiter $$
+create procedure sp_ActualizarEmailProveedor(in codigoEmailProveedor int, in emailProveedor varchar(50), in descripcion varchar(100), in codigoProveedor int)
+begin
+	update EmailProveedor
+	set
+		EmailProveedor.emailProveedor = emailProveedor,
+        EmailProveedor.descripcion = descripcion,
+        EmailProveedor.codigoProveedor = codigoProveedor
+	where
+		EmailProveedor.codigoEmailProveedor = codigoEmailProveedor;
+end $$
+delimiter ;
+
+delimiter $$
+create procedure sp_EliminarEmailProveedor(in codigoEmailProveedor int)
+begin
+	delete from EmailProveedor where EmailProveedor.codigoEmailProveedor = codigoEmailProveedor;
+end $$
+delimiter ;
+
+-- Telefono Proveedor
+
+delimiter $$
+create procedure sp_agregarTelefonoProveedor(in codigoTelefonoProveedor int, in numeroPrincipal varchar(8), in numeroSecundario varchar(8), in observaciones varchar(45), in codigoProveedor int)
+begin
+	insert into TelefonoProveedor(codigoTelefonoProveedor, numeroPrincipal, numeroSecundario, observaciones, codigoProveedor)
+    values (codigoTelefonoProveedor, numeroPrincipal, numeroSecundario, observaciones, codigoProveedor);
+end $$
+delimiter ;
+
+call sp_agregarTelefonoProveedor(2,'12345678','87654321','502',1);
+
+delimiter $$
+create procedure sp_ListarTelefonoProveedor()
+begin
+	select * from TelefonoProveedor;
+end $$
+delimiter ;
+
+call sp_ListarTelefonoProveedor;
+
+delimiter $$
+create procedure sp_BuscarTelefonoProveedor(in codigoTelefonoProveedor int)
+begin
+	select * from TelefonoProveedor where TelefonoProveedor.codigoTelefonoProveedor = codigoTelefonoProveedor;
+end $$
+delimiter ;
+
+call sp_BuscarTelefonoProveedor(1);
+
+delimiter $$
+create procedure sp_ActualizarTelefonoProveedor(in codigoTelefonoProveedor int, in numeroPrincipal varchar(8), in numeroSecundario varchar(8), in observaciones varchar(45), in codigoProveedor int)
+begin
+	update TelefonoProveedor
+    set
+		TelefonoProveedor.numeroPrincipal = numeroPrincipal,
+        TelefonoProveedor.numeroSecundario = numeroSecundario, 
+        TelefonoProveedor.observaciones = observaciones,
+        TelefonoProveedor.codigoProveedor = codigoProveedor
+	where 
+		TelefonoProveedor.codigoTelefonoProveedor = codigoTelefonoProveedor;
+end $$
+delimiter ;
+
+delimiter $$
+create procedure sp_EliminarTelefonoProveedor(in codigoTelefonoProveedor int)
+begin
+	delete from TelefonoProveedor where TelefonoProveedor.codigoTelefonoProveedor = codigoTelefonoProveedor;
+end $$
+delimiter ;
 
 -- Productos
 

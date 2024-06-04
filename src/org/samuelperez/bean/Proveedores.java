@@ -11,9 +11,7 @@ package org.samuelperez.bean;
  */
 public class Proveedores {
 
-    public static void add(Proveedores registro) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+
     
     private int codigoProveedor;
     private String NITProveedor;
@@ -106,7 +104,7 @@ public class Proveedores {
 
     @Override
     public String toString() {
-        return getNITProveedor()+ " | " + getNombresProveedor();
+        return "| " + getCodigoProveedor() + " | " + getNITProveedor() + " | " + getNombresProveedor() + " | " + getRazonSocial();
     }
       
 }
