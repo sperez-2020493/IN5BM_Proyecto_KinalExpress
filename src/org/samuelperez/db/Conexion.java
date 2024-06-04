@@ -22,7 +22,7 @@ public class Conexion {
     public Conexion() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/DBKinalExpress2020493?useSSL=false", "root", "F6fvGtCf");
+            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/DBKinalExpress2020493?useSSL=false", "2020493_IN5BM", "abc123**");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (InstantiationException a) {
