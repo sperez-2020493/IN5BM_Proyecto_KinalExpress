@@ -207,13 +207,10 @@ begin
     values (codigoCliente, NITClientes, nombresCliente, apellidosCliente, direccionCliente, telefonoCliente, correoCliente);
 end $$
 delimiter ;
-call sp_AgregarClientes(1,'5454852121','Samuel','Perez','12 Calle y 6 Avenida','3441421','Sperez');
-call sp_AgregarClientes(2,'4444444444','Luis','Orlando','13 Calle 12 Avenida','3441421','Sperez');
-call sp_AgregarClientes(3,'4444444444','Luis','Orlando','13 Calle 12 Avenida','3441421','Sperez');
-call sp_AgregarClientes(4,'4444444444','Luis','Orlando','13 Calle 12 Avenida','3441421','Sperez');
-call sp_AgregarClientes(5,'4444444444','Luis','Orlando','13 Calle 12 Avenida','3441421','Sperez');
-call sp_AgregarClientes(6,'4444444444','Luis','Orlando','13 Calle 12 Avenida','3441421','Sperez');
-call sp_AgregarClientes(7,'4444444444','Luis','Orlando','13 Calle 12 Avenida','3441421','Sperez');
+call sp_AgregarClientes(1,'5454852121','Samuel','Perez','12 Calle y 6 Avenida','3441421','Sperez@kinal.edu.gt');
+call sp_AgregarClientes(2,'4444444444','Carlos Jose','Argeta Arjona','13 Calle 12 Avenida','78451221','Cargeta@kinal.edu.gt');
+call sp_AgregarClientes(4,'1145632221','David Daniel','Perez Tubac','13 Calle 12 Avenida','12365894','Dperez@kinal.edu.gt');
+call sp_AgregarClientes(5,'3251458745','Ramieo Luis','Orlando Gaitan','13 Calle 12 Avenida','78451254','Rorlando@kinal.edu.gt');
 
 
 delimiter $$
@@ -440,6 +437,9 @@ delimiter ;
 
 call sp_AgregarProveedores(1,'4587152','Carlos Luis','Perez Gomez','Mi Casa 1 zona 3','Pepsico Iberia Servicios Centrales','5478-5546','PePsico.com');
 call sp_AgregarProveedores(2,'4587152','Carlos Luis','Tubac Gomez','Mi Casa 1 zona 3','Pepsico Iberia Servicios Centrales','5478-5546','PePsico.com');
+call sp_AgregarProveedores(3,'3625897','Daniel Luis','Tuy Sanches','zona 18-Residenciales Valles del Norte','Pepsico Iberia Servicios Centrales','9855-3652','PePsico.com');
+call sp_AgregarProveedores(4,'9876541','Miguel Rodrigo','Castillo Herrera','zona 5-13 calle','Pepsico Iberia Servicios Centrales','3652-4785','PePsico.com');
+call sp_AgregarProveedores(5,'8546324','Samuel Alexander','Perez Cap','zona 8-5 Avenida-13 calle','Pepsico Iberia Servicios Centrales','7458-2154','PePsico.com');
 
 
 delimiter $$

@@ -1,10 +1,11 @@
-
 package org.samuelperez.controller;
 
 import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,15 +23,12 @@ import javafx.scene.image.ImageView;
 import javax.swing.JOptionPane;
 import org.samuelperez.bean.Clientes;
 import org.samuelperez.db.Conexion;
+import org.samuelperez.report.GenerarReportes;
 import org.samuelperez.system.Principal;
 
-
-
 /**
- * @author Nombre: Samuel Alexander Perez Cap
- * Carnet: 2020493  Grado:IN5BM
+ * @author Nombre: Samuel Alexander Perez Cap Carnet: 2020493 Grado:IN5BM
  */
-
 /**
  * Este controlador del Menu Clientes tiene una clase el cual se encarga de
  * manejar y controlar las acciones y eventos del menu clientes.
@@ -47,7 +45,7 @@ public class MenuClientesController implements Initializable {
     private enum operaciones {
         AGREGAR, ELIMINAR, EDITAR, ACTUALIZAR, CANCELAR, NINGUNO
     };
-    
+
     // Variable para almacenar la operación actual
     private operaciones tipoDeOperaciones = operaciones.NINGUNO;
 
@@ -369,23 +367,34 @@ public class MenuClientesController implements Initializable {
 
     }
 
-    
     /**
      * Se encarga de cancelar el metodo de editar y reiniciar la vista al
      * precionar el boton Report, la vista vuelve a su estado de inicio.
      */
     public void cancelar() {
-        desactivarControles();
-        limpiarControles();
-        btnEditar.setText("Editar");
-        btnReport.setText("Reporte");
-        btnAgregar.setDisable(false);
-        btnEliminar.setDisable(false);
-        imgEditar.setImage(new Image("/org/samuelperez/images/MenuClientes_IconEditarUsuario.png"));
-        imgReport.setImage(new Image("/org/samuelperez/images/MenuClientes_IconReportUsuario.png"));
-        tipoDeOperaciones = operaciones.NINGUNO;
+        switch (tipoDeOperaciones) {
+            case NINGUNO:
+                imprimirReporte();
+            case ACTUALIZAR:
+                desactivarControles();
+                limpiarControles();
+                btnEditar.setText("Editar");
+                btnReport.setText("Reporte");
+                btnAgregar.setDisable(false);
+                btnEliminar.setDisable(false);
+                imgEditar.setImage(new Image("/org/samuelperez/images/MenuClientes_IconEditarUsuario.png"));
+                imgReport.setImage(new Image("/org/samuelperez/images/MenuClientes_IconReportUsuario.png"));
+                tipoDeOperaciones = operaciones.NINGUNO;
+                break;
+        }
     }
-    
+
+    public void imprimirReporte() {
+        Map parametros = new HashMap();
+        parametros.put("codigoCliente", null);
+        GenerarReportes.mostrarReportes("ReporteEjemplo.jasper", "Reporte de Clientes", parametros);
+    }
+
     /**
      * El metodo actualizar se encarga de realizar la conexion al procedimiento
      * almacenado que se encarga de Actualizar la tupla seleccionada de la tabla

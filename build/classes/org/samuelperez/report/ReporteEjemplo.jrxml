@@ -32,7 +32,7 @@
 		<band height="802" splitType="Stretch">
 			<image>
 				<reportElement x="-13" y="-19" width="651" height="802" uuid="b470948a-3f1d-4dad-95a1-1feefde700c0"/>
-				<imageExpression><![CDATA["C:\\Users\\David Perez\\Desktop\\Repositorio Casa\\IN5BM_Proyecto_KinalExpress\\src\\org\\samuelperez\\images\\ReporteClientes.jpg"]]></imageExpression>
+				<imageExpression><![CDATA["C:\\Users\\Informatica\\Desktop\\Repositorio\\IN5BM_Proyecto_KinalExpress\\src\\org\\samuelperez\\images\\ReporteClientes.jpg"]]></imageExpression>
 			</image>
 		</band>
 	</background>
@@ -53,11 +53,13 @@
 				<reportElement x="0" y="15" width="545" height="20" forecolor="#FAD7A0" backcolor="#FAD7A0" uuid="bf063e2c-bc55-4b4f-a44f-2c08b016b7a6"/>
 			</rectangle>
 			<staticText>
-				<reportElement x="71" y="15" width="100" height="20" backcolor="#F0B27A" uuid="344da0d0-e77f-4788-8bc0-d75fa376dd36"/>
+				<reportElement x="84" y="15" width="100" height="20" backcolor="#F0B27A" uuid="344da0d0-e77f-4788-8bc0-d75fa376dd36"/>
+				<textElement textAlignment="Center"/>
 				<text><![CDATA[NOMBRES]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="147" y="15" width="100" height="20" uuid="05e54e4e-0de3-44d6-a565-71a58910e462"/>
+				<reportElement x="240" y="15" width="100" height="20" uuid="05e54e4e-0de3-44d6-a565-71a58910e462"/>
+				<textElement textAlignment="Center"/>
 				<text><![CDATA[APELLIDOS]]></text>
 			</staticText>
 			<staticText>
@@ -65,16 +67,9 @@
 				<text><![CDATA[        NIT]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="232" y="15" width="100" height="20" uuid="ad450238-a896-4aec-ab3d-11b9fa81c4bf"/>
-				<text><![CDATA[DIRECCION]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="355" y="15" width="100" height="20" uuid="2de91dcf-2b74-4fba-9b15-9aeb6dc423b5"/>
+				<reportElement x="405" y="15" width="100" height="20" uuid="2de91dcf-2b74-4fba-9b15-9aeb6dc423b5"/>
+				<textElement textAlignment="Center"/>
 				<text><![CDATA[TELEFONO]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="455" y="15" width="100" height="20" uuid="d9e12ebd-26cb-4876-99d4-97e57ad2d30a"/>
-				<text><![CDATA[EMAIL]]></text>
 			</staticText>
 		</band>
 	</pageHeader>
@@ -86,16 +81,16 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="67" splitType="Stretch">
+		<band height="82" splitType="Stretch">
 			<rectangle>
 				<reportElement x="0" y="0" width="545" height="20" forecolor="#F9E79F" backcolor="#F9E79F" uuid="42d4bc3e-f29a-4e8d-bebe-217d9e84eeea"/>
 			</rectangle>
 			<textField>
-				<reportElement x="84" y="0" width="100" height="20" uuid="8bde1de4-9b19-40f7-82e2-27aaa1965c0d"/>
+				<reportElement x="122" y="0" width="100" height="20" uuid="8bde1de4-9b19-40f7-82e2-27aaa1965c0d"/>
 				<textFieldExpression><![CDATA[$F{nombresCliente}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="161" y="0" width="100" height="20" uuid="ea41b28d-f39a-4b00-9222-0bf71c952c43"/>
+				<reportElement x="272" y="0" width="100" height="20" uuid="ea41b28d-f39a-4b00-9222-0bf71c952c43"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
@@ -105,20 +100,13 @@
 				<reportElement x="0" y="0" width="100" height="20" uuid="8fc669e5-6a4b-4f28-a01e-18eb6f535230"/>
 				<textFieldExpression><![CDATA[$F{NITClientes}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="232" y="0" width="100" height="20" uuid="75ec2c6f-234e-4202-9404-d5c95d212969"/>
-				<textFieldExpression><![CDATA[$F{direccionCliente}]]></textFieldExpression>
-			</textField>
 			<line>
 				<reportElement x="0" y="31" width="555" height="1" uuid="2bd38ca5-73fb-4cd8-8baf-336498ce1d04"/>
 			</line>
 			<textField>
-				<reportElement x="355" y="0" width="100" height="20" uuid="961f0e50-e735-493f-8be4-a934b2dff67c"/>
+				<reportElement x="405" y="0" width="100" height="20" uuid="961f0e50-e735-493f-8be4-a934b2dff67c"/>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{telefonoCliente}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="455" y="0" width="100" height="20" uuid="daae1139-9fb2-4d48-b8f2-7f3c2b76597a"/>
-				<textFieldExpression><![CDATA[$F{correoCliente}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

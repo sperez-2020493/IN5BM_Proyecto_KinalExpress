@@ -4,6 +4,8 @@ import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -20,6 +22,7 @@ import javafx.scene.image.ImageView;
 import javax.swing.JOptionPane;
 import org.samuelperez.bean.Proveedores;
 import org.samuelperez.db.Conexion;
+import org.samuelperez.report.GenerarReportes;
 import org.samuelperez.system.Principal;
 
 /**
@@ -387,16 +390,29 @@ public class MenuProveedoresController implements Initializable {
      * precionar el boton Report, la vista vuelve a su estado de inicio.
      */
     public void cancelar() {
-        desactivarControles();
-        limpiarControles();
-        btnEditar.setText("Editar");
-        btnReport.setText("Reporte");
-        btnAgregar.setDisable(false);
-        btnEliminar.setDisable(false);
-        imgEditar.setImage(new Image("/org/samuelperez/images/MenuClientes_IconEditarUsuario.png"));
-        imgReport.setImage(new Image("/org/samuelperez/images/MenuClientes_IconReportUsuario.png"));
-        tipoDeOperaciones = operaciones.NINGUNO;
+        switch (tipoDeOperaciones) {
+            case NINGUNO:
+                imprimirReporte();
+            case ACTUALIZAR:
+                desactivarControles();
+                limpiarControles();
+                btnEditar.setText("Editar");
+                btnReport.setText("Reporte");
+                btnAgregar.setDisable(false);
+                btnEliminar.setDisable(false);
+                imgEditar.setImage(new Image("/org/samuelperez/images/MenuClientes_IconEditarUsuario.png"));
+                imgReport.setImage(new Image("/org/samuelperez/images/MenuClientes_IconReportUsuario.png"));
+                tipoDeOperaciones = operaciones.NINGUNO;
+                break;
+        }
     }
+
+    public void imprimirReporte() {
+        Map parametros = new HashMap();
+        parametros.put("codigoProveedor", null);
+        GenerarReportes.mostrarReportes("ReporteProveedores.jasper", "Reporte de Proveedores", parametros);
+    }
+
 
     /**
      * El metodo actualizar se encarga de realizar la conexion al procedimiento
