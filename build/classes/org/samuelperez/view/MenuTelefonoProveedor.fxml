@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.samuelperez.controller.MenuTelefonoProveedorController">
+   <children>
+      <ImageView fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/MenuTelefonoProveedor_Fondo.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnRegresar" alignment="TOP_LEFT" contentDisplay="TOP" layoutX="1181.0" layoutY="21.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="47.0" prefWidth="73.0" style="-fx-background-color: #FF914D;" text="Rregresar">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="49.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/View_IconRegresar.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <TableView fx:id="tblTelefonoProveedor" layoutX="215.0" layoutY="152.0" onMouseClicked="#seleccionarElemento" prefHeight="391.0" prefWidth="851.0">
+         <columns>
+            <TableColumn fx:id="colTelefonoProveedorT" minWidth="170.0" prefWidth="30.0" text="ID TELEFONO " />
+            <TableColumn fx:id="colNumeroPrincipalT" minWidth="170.0" prefWidth="75.0" text="NUMERO PRINCIPAL" />
+            <TableColumn fx:id="colNumeroSecundarioT" minWidth="170.0" prefWidth="75.0" text="NUMERO SECUNDARIO" />
+            <TableColumn fx:id="colObservacionesT" minWidth="170.0" prefWidth="75.0" text="OBSERVACIONES" />
+            <TableColumn fx:id="colCodigoProveedorT" minWidth="170.0" prefWidth="75.0" text="ID PROVEEDOR" />
+         </columns>
+      </TableView>
+      <Button fx:id="btnAgregar" layoutX="30.0" layoutY="212.0" mnemonicParsing="false" onAction="#agregar" prefHeight="25.0" prefWidth="156.0" style="-fx-background-color: #80DA58;" text="Agregar" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <graphic>
+            <ImageView fx:id="imgAgregar" fitHeight="49.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/MenuClientes_IconAgregarUsuario.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="btnEditar" layoutX="30.0" layoutY="331.0" mnemonicParsing="false" onAction="#editar" prefHeight="59.0" prefWidth="156.0" style="-fx-background-color: #80DA58;" text="Editar" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <graphic>
+            <ImageView fx:id="imgEditar" fitHeight="49.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/MenuClientes_IconEditarUsuario.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="btnEliminar" layoutX="1098.0" layoutY="212.0" mnemonicParsing="false" onAction="#eliminar" prefHeight="25.0" prefWidth="156.0" style="-fx-background-color: #80DA58;" text="Eliminar" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <graphic>
+            <ImageView fx:id="imgEliminar" fitHeight="49.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/MenuClientes_IconEliminarUsuario.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="btnReport" layoutX="1103.0" layoutY="311.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="25.0" prefWidth="156.0" style="-fx-background-color: #80DA58;" text="Report" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <graphic>
+            <ImageView fx:id="imgReport" fitHeight="49.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/MenuClientes_IconReportUsuario.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Label alignment="CENTER" layoutX="218.0" layoutY="561.0" prefHeight="25.0" prefWidth="149.0" text="ID Telefono" textAlignment="RIGHT">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="376.0" layoutY="561.0" prefHeight="25.0" prefWidth="174.0" text="Numero Principal" textAlignment="RIGHT">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="553.0" layoutY="561.0" prefHeight="25.0" prefWidth="174.0" text="Numero Secundario" textAlignment="RIGHT">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="737.0" layoutY="561.0" prefHeight="25.0" prefWidth="148.0" text="Observaciones" textAlignment="RIGHT">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="894.0" layoutY="561.0" prefHeight="25.0" prefWidth="174.0" text="ID Proveedor" textAlignment="RIGHT">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtCodigoTelefonoProveedor" layoutX="215.0" layoutY="599.0" />
+      <TextField fx:id="txtNumeroPrincipalT" layoutX="389.0" layoutY="599.0" />
+      <TextField fx:id="txtNumeroSecundarioT" layoutX="566.0" layoutY="599.0" />
+      <TextField fx:id="txtObservacionesT" layoutX="737.0" layoutY="599.0" />
+      <ComboBox fx:id="cmbCodigoP" layoutX="903.0" layoutY="599.0" prefHeight="25.0" prefWidth="156.0" />
+   </children>
+</AnchorPane>

@@ -139,6 +139,7 @@ create table DetalleFactura(
 		references Productos(codigoProducto) on delete cascade
 );
 
+alter user 'root'@'localhost' identified with mysql_native_password by 'F6fvGtCf';
 
 -- COMPRAS
 delimiter $$
@@ -208,6 +209,11 @@ end $$
 delimiter ;
 call sp_AgregarClientes(1,'5454852121','Samuel','Perez','12 Calle y 6 Avenida','3441421','Sperez');
 call sp_AgregarClientes(2,'4444444444','Luis','Orlando','13 Calle 12 Avenida','3441421','Sperez');
+call sp_AgregarClientes(3,'4444444444','Luis','Orlando','13 Calle 12 Avenida','3441421','Sperez');
+call sp_AgregarClientes(4,'4444444444','Luis','Orlando','13 Calle 12 Avenida','3441421','Sperez');
+call sp_AgregarClientes(5,'4444444444','Luis','Orlando','13 Calle 12 Avenida','3441421','Sperez');
+call sp_AgregarClientes(6,'4444444444','Luis','Orlando','13 Calle 12 Avenida','3441421','Sperez');
+call sp_AgregarClientes(7,'4444444444','Luis','Orlando','13 Calle 12 Avenida','3441421','Sperez');
 
 
 delimiter $$
@@ -253,7 +259,7 @@ begin
 end $$
 delimiter ;
  
-call sp_EliminarClientes(78);
+call sp_EliminarClientes(5);
 
 
 -- TIPO PRDUCTO
@@ -545,7 +551,7 @@ begin
 end $$
 delimiter ;
 
-call sp_agregarTelefonoProveedor(2,'12345678','87654321','502',1);
+call sp_agregarTelefonoProveedor(2,'52526968','12549865','502',1);
 
 delimiter $$
 create procedure sp_ListarTelefonoProveedor()

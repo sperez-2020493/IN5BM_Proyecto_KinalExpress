@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -19,18 +20,24 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javax.swing.JOptionPane;
 import org.samuelperez.bean.Proveedores;
+import org.samuelperez.bean.TelefonoProveedor;
 import org.samuelperez.db.Conexion;
 import org.samuelperez.system.Principal;
 
 /**
- * @author Nombre: Samuel Alexander Perez Cap 
- * Carnet: 2020493 Grado:IN5BM
+ * @author Nombre: Samuel Alexander Perez Cap Carnet: 2020493 Grado:IN5BM
  */
-public class MenuProveedoresController implements Initializable {
+/**
+ * Controlador del menú principal. La Clase se encarga de las acciones y eventos
+ * del menú principal.
+ */
+public class MenuTelefonoProveedorController implements Initializable {
 
-    // Referencia al escenario principal de la aplicación
     private Principal escenarioPrincipal;
-    
+
+    // Lista observable para almacenar objetos de tipo 'TelefonoProveedor'
+    private ObservableList<TelefonoProveedor> listaTelefonoProveedor;
+
     // Lista observable para almacenar objetos de tipo 'Proveedores'
     private ObservableList<Proveedores> listaProveedores;
 
@@ -40,44 +47,28 @@ public class MenuProveedoresController implements Initializable {
     };
 
     // Variable para almacenar la operación actual
-    private operaciones tipoDeOperaciones = operaciones.NINGUNO;
-    
-    // Botones,tabla, columnas e imágenes de la interfaz de la vista 
+    private MenuTelefonoProveedorController.operaciones tipoDeOperaciones = operaciones.NINGUNO;
+
     @FXML
     private Button btnRegresar;
 
     @FXML
-    private Button btnEmailProveedor;
-    
-    @FXML
-    private Button btnTelefonoProveedor;
-    
-    @FXML
-    private TableView tblProveedores;
+    private TableView tblTelefonoProveedor;
 
     @FXML
-    private TableColumn colProveedorP;
+    private TableColumn colTelefonoProveedorT;
 
     @FXML
-    private TableColumn colNitP;
+    private TableColumn colNumeroPrincipalT;
 
     @FXML
-    private TableColumn colNombreP;
+    private TableColumn colNumeroSecundarioT;
 
     @FXML
-    private TableColumn colApellidoP;
+    private TableColumn colObservacionesT;
 
     @FXML
-    private TableColumn colDireccionP;
-
-    @FXML
-    private TableColumn colRazonSocialP;
-
-    @FXML
-    private TableColumn colContactoP;
-
-    @FXML
-    private TableColumn colPaginaWebP;
+    private TableColumn colCodigoProveedorT;
 
     @FXML
     private Button btnAgregar;
@@ -104,28 +95,19 @@ public class MenuProveedoresController implements Initializable {
     private ImageView imgReport;
 
     @FXML
-    private TextField txtCodigoProveedor;
+    private TextField txtCodigoTelefonoProveedor;
 
     @FXML
-    private TextField txtNitProveedor;
+    private TextField txtNumeroPrincipalT;
 
     @FXML
-    private TextField txtNombresProveedor;
+    private TextField txtNumeroSecundarioT;
 
     @FXML
-    private TextField txtApellidosProveedor;
+    private TextField txtObservacionesT;
 
     @FXML
-    private TextField txtDireccionPorveedor;
-
-    @FXML
-    private TextField txtRazonSocialProveedor;
-
-    @FXML
-    private TextField txtContactoProveedor;
-
-    @FXML
-    private TextField txtPaginaWebPorveedor;
+    private ComboBox cmbCodigoP;
 
     /**
      * Se encarga de devolver el escenario.
@@ -145,13 +127,10 @@ public class MenuProveedoresController implements Initializable {
         this.escenarioPrincipal = escenarioPrincipal;
     }
 
-    /**
-     * El @Override se encarga de cargar el metodo CargarDatos llamando el
-     * metodo en el.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         cargarDatos();
+        cmbCodigoP.setItems(getProveedores());
     }
 
     /**
@@ -163,12 +142,6 @@ public class MenuProveedoresController implements Initializable {
         if (event.getSource() == btnRegresar) {
             escenarioPrincipal.menuPrincipalView();
         }
-        if (event.getSource() == btnEmailProveedor) {
-            escenarioPrincipal.menuEmailView();
-        }
-            if (event.getSource() == btnTelefonoProveedor) {
-            escenarioPrincipal.menuTelefonoView();
-        }
     }
 
     /**
@@ -176,16 +149,12 @@ public class MenuProveedoresController implements Initializable {
      * el nombre de cada columna.
      */
     public void cargarDatos() {
-        tblProveedores.setItems(getProveedores());
-        colProveedorP.setCellValueFactory(new PropertyValueFactory<Proveedores, Integer>("codigoProveedor"));
-        colNitP.setCellValueFactory(new PropertyValueFactory<Proveedores, String>("NITProveedor"));
-        colNombreP.setCellValueFactory(new PropertyValueFactory<Proveedores, String>("nombresProveedor"));
-        colApellidoP.setCellValueFactory(new PropertyValueFactory<Proveedores, String>("apellidosProveedor"));
-        colDireccionP.setCellValueFactory(new PropertyValueFactory<Proveedores, String>("direccionProveedor"));
-        colRazonSocialP.setCellValueFactory(new PropertyValueFactory<Proveedores, String>("razonSocial"));
-        colContactoP.setCellValueFactory(new PropertyValueFactory<Proveedores, String>("contactoPrincipal"));
-        colPaginaWebP.setCellValueFactory(new PropertyValueFactory<Proveedores, String>("paginaWeb"));
-
+        tblTelefonoProveedor.setItems(getTelefonoProveedor());
+        colTelefonoProveedorT.setCellValueFactory(new PropertyValueFactory<TelefonoProveedor, Integer>("codigoTelefonoProveedor"));
+        colNumeroPrincipalT.setCellValueFactory(new PropertyValueFactory<TelefonoProveedor, String>("numeroPrincipal"));
+        colNumeroSecundarioT.setCellValueFactory(new PropertyValueFactory<TelefonoProveedor, String>("numeroSecundario"));
+        colObservacionesT.setCellValueFactory(new PropertyValueFactory<TelefonoProveedor, String>("observaciones"));
+        colCodigoProveedorT.setCellValueFactory(new PropertyValueFactory<TelefonoProveedor, Integer>("codigoProveedor"));
     }
 
     /**
@@ -194,21 +163,49 @@ public class MenuProveedoresController implements Initializable {
      * elemento de la tabla.
      */
     public void seleccionarElemento() {
-        txtCodigoProveedor.setText(String.valueOf(((Proveedores) tblProveedores.getSelectionModel().getSelectedItem()).getCodigoProveedor()));
-        txtNitProveedor.setText(((Proveedores) tblProveedores.getSelectionModel().getSelectedItem()).getNITProveedor());
-        txtNombresProveedor.setText(((Proveedores) tblProveedores.getSelectionModel().getSelectedItem()).getNombresProveedor());
-        txtApellidosProveedor.setText(((Proveedores) tblProveedores.getSelectionModel().getSelectedItem()).getApellidosProveedor());
-        txtDireccionPorveedor.setText(((Proveedores) tblProveedores.getSelectionModel().getSelectedItem()).getDireccionProveedor());
-        txtRazonSocialProveedor.setText(((Proveedores) tblProveedores.getSelectionModel().getSelectedItem()).getRazonSocial());
-        txtContactoProveedor.setText(((Proveedores) tblProveedores.getSelectionModel().getSelectedItem()).getContactoPrincipal());
-        txtPaginaWebPorveedor.setText(((Proveedores) tblProveedores.getSelectionModel().getSelectedItem()).getPaginaWeb());
+        txtCodigoTelefonoProveedor.setText(String.valueOf(((TelefonoProveedor) tblTelefonoProveedor.getSelectionModel().getSelectedItem()).getCodigoTelefonoProveedor()));
+        txtNumeroPrincipalT.setText((((TelefonoProveedor) tblTelefonoProveedor.getSelectionModel().getSelectedItem()).getNumeroPrincipal()));
+        txtNumeroSecundarioT.setText((((TelefonoProveedor) tblTelefonoProveedor.getSelectionModel().getSelectedItem()).getNumeroSecundario()));
+        txtObservacionesT.setText((((TelefonoProveedor) tblTelefonoProveedor.getSelectionModel().getSelectedItem()).getObservaciones()));
+        cmbCodigoP.getSelectionModel().select(buscarCodigoProveedor(((TelefonoProveedor) tblTelefonoProveedor.getSelectionModel().getSelectedItem()).getCodigoProveedor()));
+    }
+
+    /**
+     * Este método se utiliza para buscar una Tipo de Producto en la base de
+     * datos realizando una conexion al metodo almacenado que se encarga de
+     * buscar.
+     *
+     * @param codigoCargoEmpleado El codigo de tipo Producto de la tabla a
+     * buscar.
+     * @return La compra encontrada, o null si no se encuentra ninguna compra.
+     */
+    public Proveedores buscarCodigoProveedor(int codigoProveedor) {
+        Proveedores resultado = null;
+        try {
+            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("call sp_BuscarProveedores(?);");
+            procedimiento.setInt(1, codigoProveedor);
+            ResultSet registro = procedimiento.executeQuery();
+            while (registro.next()) {
+                resultado = new Proveedores(registro.getInt("codigoProveedor"),
+                        registro.getString("NITProveedor"),
+                        registro.getString("nombresProveedor"),
+                        registro.getString("apellidosProveedor"),
+                        registro.getString("direccionProveedor"),
+                        registro.getString("razonSocial"),
+                        registro.getString("contactoPrincipal"),
+                        registro.getString("paginaWeb"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return resultado;
     }
 
     /**
      * El metodo realizar la conexion con el procedimiento almacenado que se
      * encarga de listar las informacion de la tabla y todas sus tuplas, esta
      * funciona con una ArrayList para poder manejar los datos.
-     * 
+     *
      * @return una lista que se puede observar de los Proveedores.
      */
     public ObservableList<Proveedores> getProveedores() {
@@ -236,7 +233,35 @@ public class MenuProveedoresController implements Initializable {
     }
 
     /**
-     * El metodk agregar tiene la funcion de realizar una nueva tupla en la
+     * El metodo realizar la conexion con el procedimiento almacenado que se
+     * encarga de listar las informacion de la tabla y todas sus tuplas, esta
+     * funciona con una ArrayList para poder manejar los datos.
+     *
+     * @return una lista que se puede observar de los Telefono Proveedor.
+     */
+    public ObservableList<TelefonoProveedor> getTelefonoProveedor() {
+        ArrayList<TelefonoProveedor> lista = new ArrayList<>();
+        ResultSet resultado = null;
+
+        try {
+            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("call sp_ListarTelefonoProveedor();");
+            resultado = procedimiento.executeQuery();
+            while (resultado.next()) {
+                lista.add(new TelefonoProveedor(resultado.getInt("codigoTelefonoProveedor"),
+                        resultado.getString("numeroPrincipal"),
+                        resultado.getString("numeroSecundario"),
+                        resultado.getString("observaciones"),
+                        resultado.getInt("codigoProveedor")));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return listaTelefonoProveedor = FXCollections.observableList(lista);
+
+    }
+
+    /**
+     * El metodo agregar tiene la funcion de realizar una nueva tupla en la
      * tabla de la base de datos, esta tiene un switch con 2 casos, el caso
      * ninguno resive los datos y el tro caso es el que llama al metodo guardar
      * para guardar los datos de los txt y cargar la vista para mostrar la tupla
@@ -275,28 +300,21 @@ public class MenuProveedoresController implements Initializable {
      * los txt como una nueva tupla en la tabla.
      */
     public void guardar() {
-        Proveedores registro = new Proveedores();
-        registro.setCodigoProveedor(Integer.parseInt(txtCodigoProveedor.getText()));
-        registro.setNITProveedor((txtNitProveedor.getText()));
-        registro.setNombresProveedor((txtNombresProveedor.getText()));
-        registro.setApellidosProveedor((txtApellidosProveedor.getText()));
-        registro.setDireccionProveedor((txtDireccionPorveedor.getText()));
-        registro.setRazonSocial((txtRazonSocialProveedor.getText()));
-        registro.setContactoPrincipal((txtContactoProveedor.getText()));
-        registro.setPaginaWeb((txtPaginaWebPorveedor.getText()));
+        TelefonoProveedor registro = new TelefonoProveedor();
+        registro.setCodigoTelefonoProveedor(Integer.parseInt(txtCodigoTelefonoProveedor.getText()));
+        registro.setNumeroPrincipal(txtNumeroPrincipalT.getText());
+        registro.setNumeroSecundario(txtNumeroSecundarioT.getText());
+        registro.setObservaciones(txtObservacionesT.getText());
+        registro.setCodigoProveedor(((Proveedores) cmbCodigoP.getSelectionModel().getSelectedItem()).getCodigoProveedor());
         try {
-            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_AgregarProveedores(?,?,?,?,?,?,?,?)}");
-            procedimiento.setInt(1, registro.getCodigoProveedor());
-            procedimiento.setString(2, registro.getNITProveedor());
-            procedimiento.setString(3, registro.getNombresProveedor());
-            procedimiento.setString(4, registro.getApellidosProveedor());
-            procedimiento.setString(5, registro.getDireccionProveedor());
-            procedimiento.setString(6, registro.getRazonSocial());
-            procedimiento.setString(7, registro.getContactoPrincipal());
-            procedimiento.setString(8, registro.getPaginaWeb());
+            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("call sp_agregarTelefonoProveedor(?,?,?,?,?);");
+            procedimiento.setInt(1, registro.getCodigoTelefonoProveedor());
+            procedimiento.setString(2, registro.getNumeroPrincipal());
+            procedimiento.setString(3, registro.getNumeroSecundario());
+            procedimiento.setString(4, registro.getObservaciones());
+            procedimiento.setInt(5, registro.getCodigoProveedor());
             procedimiento.execute();
-            listaProveedores.add(registro);
-
+            listaTelefonoProveedor.add(registro);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -321,14 +339,14 @@ public class MenuProveedoresController implements Initializable {
                 tipoDeOperaciones = operaciones.NINGUNO;
                 break;
             default:
-                if (tblProveedores.getSelectionModel().getSelectedItem() != null) {
-                    int respuesta = JOptionPane.showConfirmDialog(null, "Confirmar la Eliminacion del Registro", "Eliminar Proveedor", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                if (tblTelefonoProveedor.getSelectionModel().getSelectedItem() != null) {
+                    int respuesta = JOptionPane.showConfirmDialog(null, "Confirmar la Eliminacion del Registro", "Eliminar Telefono Proveedor", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                     if (respuesta == JOptionPane.YES_NO_OPTION) {
                         try {
-                            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_EliminarProveedores(?)}");
-                            procedimiento.setInt(1, ((Proveedores) tblProveedores.getSelectionModel().getSelectedItem()).getCodigoProveedor());
+                            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_EliminarTelefonoProveedor(?)}");
+                            procedimiento.setInt(1, ((TelefonoProveedor) tblTelefonoProveedor.getSelectionModel().getSelectedItem()).getCodigoTelefonoProveedor());
                             procedimiento.execute();
-                            listaProveedores.remove(tblProveedores.getSelectionModel().getSelectedItem());
+                            listaTelefonoProveedor.remove(tblTelefonoProveedor.getSelectionModel().getSelectedItem());
                             limpiarControles();
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -336,7 +354,7 @@ public class MenuProveedoresController implements Initializable {
                     }
 
                 } else {
-                    JOptionPane.showMessageDialog(null, "Debe seleccionar Un Proveedor para Eliminar");
+                    JOptionPane.showMessageDialog(null, "Debe seleccionar Un Telefono para Eliminar");
                 }
         }
     }
@@ -351,7 +369,7 @@ public class MenuProveedoresController implements Initializable {
     public void editar() {
         switch (tipoDeOperaciones) {
             case NINGUNO:
-                if (tblProveedores.getSelectionModel().getSelectedItem() != null) {
+                if (tblTelefonoProveedor.getSelectionModel().getSelectedItem() != null) {
                     btnEditar.setText("Actualizar");
                     btnReport.setText("Cancelar");
                     btnAgregar.setDisable(true);
@@ -359,10 +377,10 @@ public class MenuProveedoresController implements Initializable {
                     imgEditar.setImage(new Image("/org/samuelperez/images/MenuClientes_IconActualizar.png"));
                     imgReport.setImage(new Image("/org/samuelperez/images/MenuClientes_IconCancelar.png"));
                     activarControles();
-                    txtCodigoProveedor.setEditable(false);
-                    tipoDeOperaciones = MenuProveedoresController.operaciones.ACTUALIZAR;
+                    txtCodigoTelefonoProveedor.setEditable(false);
+                    tipoDeOperaciones = MenuTelefonoProveedorController.operaciones.ACTUALIZAR;
                 } else {
-                    JOptionPane.showMessageDialog(null, "Debe de seleccionar un Proveedor");
+                    JOptionPane.showMessageDialog(null, "Debe de seleccionar un Email");
                 }
                 break;
             case ACTUALIZAR:
@@ -383,6 +401,31 @@ public class MenuProveedoresController implements Initializable {
     }
 
     /**
+     * El metodo actualizar se encarga de realizar la conexion al procedimiento
+     * almacenado que se encarga de Actualizar la tupla seleccionada de la tabla
+     * de la base de datos.
+     */
+    public void actualizar() {
+        try {
+            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_ActualizarTelefonoProveedor(?,?,?,?,?)}");
+            TelefonoProveedor registro = (TelefonoProveedor) tblTelefonoProveedor.getSelectionModel().getSelectedItem();
+            registro.setCodigoTelefonoProveedor(Integer.parseInt(txtCodigoTelefonoProveedor.getText()));
+            registro.setNumeroPrincipal(txtNumeroPrincipalT.getText());
+            registro.setNumeroSecundario(txtNumeroSecundarioT.getText());
+            registro.setObservaciones(txtObservacionesT.getText());
+            registro.setCodigoProveedor(((Proveedores) cmbCodigoP.getSelectionModel().getSelectedItem()).getCodigoProveedor());
+            procedimiento.setInt(1, registro.getCodigoTelefonoProveedor());
+            procedimiento.setString(2, registro.getNumeroPrincipal());
+            procedimiento.setString(3, registro.getNumeroSecundario());
+            procedimiento.setString(4, registro.getObservaciones());
+            procedimiento.setInt(5, registro.getCodigoProveedor());
+            procedimiento.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * Se encarga de cancelar el metodo de editar y reiniciar la vista al
      * precionar el boton Report, la vista vuelve a su estado de inicio.
      */
@@ -399,75 +442,36 @@ public class MenuProveedoresController implements Initializable {
     }
 
     /**
-     * El metodo actualizar se encarga de realizar la conexion al procedimiento
-     * almacenado que se encarga de Actualizar la tupla seleccionada de la tabla
-     * de la base de datos.
-     */
-    public void actualizar() {
-        try {
-            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_ActualizarProveedores(?,?,?,?,?,?,?,?)}");
-            Proveedores registro = (Proveedores) tblProveedores.getSelectionModel().getSelectedItem();
-            registro.setCodigoProveedor(Integer.parseInt(txtCodigoProveedor.getText()));
-            registro.setNITProveedor((txtNitProveedor.getText()));
-            registro.setNombresProveedor((txtNombresProveedor.getText()));
-            registro.setApellidosProveedor((txtApellidosProveedor.getText()));
-            registro.setDireccionProveedor((txtDireccionPorveedor.getText()));
-            registro.setRazonSocial((txtRazonSocialProveedor.getText()));
-            registro.setContactoPrincipal((txtContactoProveedor.getText()));
-            registro.setPaginaWeb((txtPaginaWebPorveedor.getText()));
-            procedimiento.setInt(1, registro.getCodigoProveedor());
-            procedimiento.setString(2, registro.getNITProveedor());
-            procedimiento.setString(3, registro.getNombresProveedor());
-            procedimiento.setString(4, registro.getApellidosProveedor());
-            procedimiento.setString(5, registro.getDireccionProveedor());
-            procedimiento.setString(6, registro.getRazonSocial());
-            procedimiento.setString(7, registro.getContactoPrincipal());
-            procedimiento.setString(8, registro.getPaginaWeb());
-            procedimiento.execute();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
      * Se encarga de desactivar los textFiel.
      */
     public void desactivarControles() {
-        txtCodigoProveedor.setEditable(false);
-        txtNitProveedor.setEditable(false);
-        txtNombresProveedor.setEditable(false);
-        txtApellidosProveedor.setEditable(false);
-        txtDireccionPorveedor.setEditable(false);
-        txtRazonSocialProveedor.setEditable(false);
-        txtContactoProveedor.setEditable(false);
-        txtPaginaWebPorveedor.setEditable(false);
+        txtCodigoTelefonoProveedor.setEditable(false);
+        txtNumeroPrincipalT.setEditable(false);
+        txtNumeroSecundarioT.setEditable(false);
+        txtObservacionesT.setEditable(false);
+        cmbCodigoP.setDisable(true);
     }
 
     /**
      * Se encarga de activar los textFiel.
      */
     public void activarControles() {
-        txtCodigoProveedor.setEditable(true);
-        txtNitProveedor.setEditable(true);
-        txtNombresProveedor.setEditable(true);
-        txtApellidosProveedor.setEditable(true);
-        txtDireccionPorveedor.setEditable(true);
-        txtRazonSocialProveedor.setEditable(true);
-        txtContactoProveedor.setEditable(true);
-        txtPaginaWebPorveedor.setEditable(true);
+        txtCodigoTelefonoProveedor.setEditable(true);
+        txtNumeroPrincipalT.setEditable(true);
+        txtNumeroSecundarioT.setEditable(true);
+        txtObservacionesT.setEditable(true);
+        cmbCodigoP.setDisable(false);
     }
 
     /**
      * Se encarga de limpiar los textFiel.
      */
     public void limpiarControles() {
-        txtCodigoProveedor.clear();
-        txtNitProveedor.clear();
-        txtNombresProveedor.clear();
-        txtApellidosProveedor.clear();
-        txtDireccionPorveedor.clear();
-        txtRazonSocialProveedor.clear();
-        txtContactoProveedor.clear();
-        txtPaginaWebPorveedor.clear();
+        txtCodigoTelefonoProveedor.clear();
+        txtNumeroPrincipalT.clear();
+        txtNumeroSecundarioT.clear();
+        txtObservacionesT.clear();
+        tblTelefonoProveedor.getSelectionModel().getSelectedItem();
+        cmbCodigoP.getSelectionModel().getSelectedItem();
     }
 }

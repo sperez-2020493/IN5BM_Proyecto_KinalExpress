@@ -23,6 +23,7 @@ import org.samuelperez.controller.MenuPrincipalController;
 import org.samuelperez.controller.MenuProductosController;
 import org.samuelperez.controller.MenuProgramadorController;
 import org.samuelperez.controller.MenuProveedoresController;
+import org.samuelperez.controller.MenuTelefonoProveedorController;
 import org.samuelperez.controller.MenuTipoProductoController;
 
 /**
@@ -216,6 +217,16 @@ public class Principal extends Application {
         try{
             MenuEmailProveedorController MenuEmail = (MenuEmailProveedorController)cambiarEscena("MenuEmailProveedor.fxml", 1280, 720);
             MenuEmail.setEscenarioPrincipal(this);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+    }
+    
+    public void menuTelefonoView() {
+        try{
+            MenuTelefonoProveedorController MenuTelefono = (MenuTelefonoProveedorController)cambiarEscena("MenuTelefonoProveedor.fxml", 1280, 720);
+            MenuTelefono.setEscenarioPrincipal(this);
         }catch(Exception e){
             System.out.println(e.getMessage());
             e.printStackTrace();
