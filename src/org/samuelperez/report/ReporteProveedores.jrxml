@@ -4,7 +4,7 @@
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<queryString>
-		<![CDATA[select * from vw_Proveedores;]]>
+		<![CDATA[select * from vw_ProveedoresP;]]>
 	</queryString>
 	<field name="codigoProveedor" class="java.lang.Integer">
 		<fieldDescription><![CDATA[]]></fieldDescription>
@@ -18,20 +18,14 @@
 	<field name="razonSocial" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="contactoPrincipal" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
 	<field name="numeroPrincipal" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="emailProveedor" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<background>
 		<band height="802" splitType="Stretch">
 			<image>
 				<reportElement x="2" y="0" width="553" height="802" uuid="77e28d30-dee3-416d-921b-74c8f3e6b653"/>
-				<imageExpression><![CDATA["C:\\Users\\David Perez\\Desktop\\Repositorio Casa\\IN5BM_Proyecto_KinalExpress\\src\\org\\samuelperez\\images\\ReporteProveedores.jpg"]]></imageExpression>
+				<imageExpression><![CDATA["C:\\Users\\Informatica\\Desktop\\Repositorio\\IN5BM_Proyecto_KinalExpress\\src\\org\\samuelperez\\images\\ReporteProveedores.jpg"]]></imageExpression>
 			</image>
 		</band>
 	</background>
@@ -56,13 +50,8 @@
 			</line>
 			<staticText>
 				<reportElement x="3" y="0" width="100" height="20" uuid="854ddafd-af65-4795-87cb-9a57c049e971"/>
-				<textElement textAlignment="Center"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[NITProveedor]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="125" y="0" width="100" height="20" uuid="07232304-f2c0-42b8-a6b6-2a532e4ff7c7"/>
-				<textElement textAlignment="Center"/>
-				<text><![CDATA[Contacto Principal]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="263" y="4" width="100" height="20" uuid="bafb510a-76f1-4830-8909-717d59f75044"/>
@@ -70,9 +59,14 @@
 				<text><![CDATA[Numero Principal]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="420" y="1" width="100" height="20" uuid="94e31a5c-3787-4d86-b04e-88bcbaa674e2"/>
-				<textElement textAlignment="Center"/>
-				<text><![CDATA[Emai lProveedor]]></text>
+				<reportElement x="437" y="0" width="100" height="20" uuid="31b5e76e-a7f0-48dd-8404-520475525461"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Razon Social]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="125" y="0" width="100" height="20" uuid="cb90f758-75c2-4b91-91e4-518b8f257a9f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Direccion Proveedor]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
@@ -83,26 +77,28 @@
 			</rectangle>
 			<textField>
 				<reportElement x="3" y="0" width="100" height="20" uuid="e5f6b6d5-cd47-4d66-b483-c1c2132f7494"/>
-				<textElement textAlignment="Center"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{NITProveedor}]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="3" y="20" width="553" height="1" uuid="43f71061-42f9-420f-a7bc-4962037ec342"/>
 			</line>
 			<textField>
-				<reportElement x="125" y="1" width="100" height="20" uuid="c5a9d082-eccf-4687-9ff6-20b779063c7f"/>
-				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{contactoPrincipal}]]></textFieldExpression>
-			</textField>
-			<textField>
 				<reportElement x="263" y="0" width="100" height="20" uuid="edbc92b3-652e-4350-9904-52fd7ca8d726"/>
-				<textElement textAlignment="Center"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{numeroPrincipal}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="420" y="0" width="100" height="20" uuid="dfa5436e-d7e2-4312-b3b7-a82b1579e7f6"/>
-				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{emailProveedor}]]></textFieldExpression>
+				<reportElement x="437" y="0" width="100" height="20" uuid="58d58346-d686-4573-9c7d-4e31f93763de"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{razonSocial}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="125" y="0" width="100" height="20" uuid="27f6d82c-122f-4e46-91ce-8d834d83c67b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{direccionProveedor}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

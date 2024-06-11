@@ -4,8 +4,7 @@
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<queryString>
-		<![CDATA[select * from vw_Productos;
-]]>
+		<![CDATA[select * from vw_ProductosTP;]]>
 	</queryString>
 	<field name="codigoProducto" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
@@ -32,7 +31,7 @@
 		<band height="802" splitType="Stretch">
 			<image>
 				<reportElement x="0" y="0" width="555" height="802" uuid="10d106b2-7a5d-4124-924e-c2f49bacf561"/>
-				<imageExpression><![CDATA["C:\\Users\\David Perez\\Desktop\\Repositorio Casa\\IN5BM_Proyecto_KinalExpress\\src\\org\\samuelperez\\images\\ReporteProducto.jpg"]]></imageExpression>
+				<imageExpression><![CDATA["C:\\Users\\Informatica\\Desktop\\Repositorio\\IN5BM_Proyecto_KinalExpress\\src\\org\\samuelperez\\images\\ReporteProducto.jpg"]]></imageExpression>
 			</image>
 		</band>
 	</background>

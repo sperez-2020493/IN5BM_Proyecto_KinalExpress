@@ -32,7 +32,7 @@
 		<band height="802" splitType="Stretch">
 			<image>
 				<reportElement x="-13" y="-19" width="651" height="802" uuid="b470948a-3f1d-4dad-95a1-1feefde700c0"/>
-				<imageExpression><![CDATA["C:\\Users\\David Perez\\Desktop\\Repositorio Casa\\IN5BM_Proyecto_KinalExpress\\src\\org\\samuelperez\\images\\ReporteClientes.jpg"]]></imageExpression>
+				<imageExpression><![CDATA["C:\\Users\\Informatica\\Desktop\\Repositorio\\IN5BM_Proyecto_KinalExpress\\src\\org\\samuelperez\\images\\ReporteClientes.jpg"]]></imageExpression>
 			</image>
 		</band>
 	</background>

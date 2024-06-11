@@ -384,6 +384,7 @@ end $$
 delimiter ;
 
 call sp_AgregarEmpleados(1,'Samuel','Perez','5000','zona 18','Matutino',1);
+call sp_AgregarEmpleados(2,'Samuel','Perez','5000','zona 18','Matutino',1);
 
 
 delimiter $$
@@ -651,7 +652,56 @@ begin
 end $$
 delimiter ;
  
+-- Factura
+delimiter $$
+create procedure sp_AgregarFactura(in numeroFactura int, in estado varchar(50), in totalFactura decimal(10,2), in fechaFactura date,in codigoCliente int, in codigoEmpleado int)
+begin
+	insert into Factura(numeroFactura,estado,totalFactura,fechaFactura,codigoCliente,codigoEmpleado)
+    values (numeroFactura,estado,totalFactura,fechaFactura,codigoCliente,codigoEmpleado);
+end $$
+delimiter ;
 
+call sp_AgregarFactura(1,'Pagado',100.0,'2024-05-10',2,1);
+call sp_AgregarFactura(2,'Pagado',100.0,'2024-05-10',3,2);
+
+
+delimiter $$
+create procedure sp_ListarFactura()
+begin
+	select * from Factura;
+end $$
+delimiter ;
+
+delimiter $$
+create procedure sp_BuscarFactura(in numeroFactura int)
+begin
+	select * from Factura where Factura.numeroFactura = numeroFactura;
+end $$
+delimiter ;
+
+call sp_BuscarFactura(1);
+
+delimiter $$
+create procedure sp_ActualizarFactura(in numeroFactura int, in estado varchar(50), in totalFactura decimal(10,2), in fechaFactura date,in codigoCliente int, in codigoEmpleado int)
+begin
+	update Factura
+    set
+		Factura.estado = estado,
+        Factura.totalFactura = totalFactura,
+        Factura.fechaFactura = fechaFactura,
+        Factura.codigoCliente = codigoCliente,
+        Factura.codigoEmpleado = codigoEmpleado
+	where
+		Factura.numeroFactura = numeroFactura;
+end $$
+delimiter ;
+
+delimiter $$
+create procedure sp_EliminarFactura(in numeroFactura int)
+begin
+	delete from Factura where Factura.numeroFactura = numeroFactura;
+end $$
+delimiter ;
 
 -- Detalle Compra
 
@@ -663,7 +713,7 @@ begin
 end $$
 delimiter ;
 
-call sp_AgregarDetalleCompra(1,50.3,15,'1',3);
+call sp_AgregarDetalleCompra(1,50.3,15,'1',2);
 
 
 delimiter $$
@@ -708,52 +758,53 @@ begin
 end $$
 delimiter ;
 
--- Factura
+
+-- Detalle Factura
 delimiter $$
-create procedure sp_AgregarFactura(in numeroFactura int, in estado varchar(50), in totalFactura decimal(10,2), in fechaFactura date,in codigoCliente int, in codigoEmpleado int)
+create procedure sp_agregarDetalleFactura(in codigoDetalleFactura int, in precioUnitario decimal(10,2), in cantidad int, in numeroFactura int, in codigoProducto varchar(15))
 begin
-	insert into Factura(numeroFactura,estado,totalFactura,fechaFactura,codigoCliente,codigoEmpleado)
-    values (numeroFactura,estado,totalFactura,fechaFactura,codigoCliente,codigoEmpleado);
+	insert into DetalleFactura(codigoDetalleFactura, precioUnitario, cantidad, numeroFactura, codigoProducto)
+    values (codigoDetalleFactura, precioUnitario, cantidad, numeroFactura, codigoProducto);
 end $$
 delimiter ;
 
-call sp_AgregarFactura(1,'Pagado',100.0,'2024-05-10',2,1);
+call sp_agregarDetalleFactura(1,12,3,1,'1');
+call sp_agregarDetalleFactura(2,0.00,3,2,'1');
 
 delimiter $$
-create procedure sp_ListarFactura()
+create procedure sp_listarDetallesFacturas()
 begin
-	select * from Factura;
+	select * from DetalleFactura;
+end $$
+delimiter ;
+
+call sp_listarDetallesFacturas();
+
+delimiter $$
+create procedure sp_buscarDetalleFactura(in codigoDetalleFactura int)
+begin 
+	select * from DetalleFactura where DetalleFactura.codigoDetalleFactura = codigoDetalleFactura;
+end $$
+delimiter ;
+
+
+delimiter $$
+create procedure sp_actualizarDetalleFactura(in codigoDetalleFactura int, in precioUnitario decimal(10,2), in cantidad int, in numeroFactura int, in codigoProducto varchar(15))
+begin
+	update DetalleFactura
+		set
+			DetalleFactura.precioUnitario = precioUnitario,
+            DetalleFactura.cantidad = cantidad,
+            DetalleFactura.numeroFactura = numeroFactura,
+            DetalleFactura.codigoProducto = codigoProducto
+		where DetalleFactura.codigoDetalleFactura = codigoDetalleFactura;
 end $$
 delimiter ;
 
 delimiter $$
-create procedure sp_BuscarFactura(in numeroFactura int)
+create procedure sp_eliminarDetalleFactura(in codigoDetalleFactura int)
 begin
-	select * from Factura where Factura.numeroFactura = numeroFactura;
-end $$
-delimiter ;
-
-call sp_BuscarFactura(1);
-
-delimiter $$
-create procedure sp_ActualizarFactura(in numeroFactura int, in estado varchar(50), in totalFactura decimal(10,2), in fechaFactura date,in codigoCliente int, in codigoEmpleado int)
-begin
-	update Factura
-    set
-		Factura.estado = estado,
-        Factura.totalFactura = totalFactura,
-        Factura.fechaFactura = fechaFactura,
-        Factura.codigoCliente = codigoCliente,
-        Factura.codigoEmpleado = codigoEmpleado
-	where
-		Factura.numeroFactura = numeroFactura;
-end $$
-delimiter ;
-
-delimiter $$
-create procedure sp_EliminarFactura(in numeroFactura int)
-begin
-	delete from Factura where Factura.numeroFactura = numeroFactura;
+	delete from DetalleFactura where DetalleFactura.codigoDetalleFactura = codigoDetalleFactura;
 end $$
 delimiter ;
 
@@ -787,7 +838,7 @@ begin
     set precioP = (select precioUnitario from Productos where codigoProducto = new.codigoProducto);
     update DetalleFactura
     set DetalleFactura.precioUnitario = precioP
-    where DetalleFactura.codigoProducto = NEW.codigoProducto;
+    where DetalleFactura.codigoProducto = new.codigoProducto;
 end $$
 delimiter ;
 
@@ -798,10 +849,10 @@ for each row
 begin
     declare total decimal(10,2);
      select sum(costoUnitario * cantidad) into total from DetalleCompra 
-    where numeroDocumento = NEW.numeroDocumento;
+    where numeroDocumento = new.numeroDocumento;
     update Compras 
 		set totalDocumento = total 
-	where numeroDocumento = NEW.numeroDocumento;
+	where numeroDocumento = new.numeroDocumento;
 end $$
 delimiter ;
 
@@ -820,18 +871,24 @@ end $$
 delimiter ;
 
 
-create view vw_Productos as
+create view vw_ProductosTP as
 select Productos.codigoProducto, Productos.precioUnitario, Productos.precioDocena, Productos.precioMayor, Productos.existencia, TipoProducto.Descripcion, Proveedores.razonSocial
 from Productos
 inner join TipoProducto on Productos.codigoTipoProducto = TipoProducto.codigoTipoProducto
 inner join Proveedores on Productos.codigoProveedor = Proveedores.codigoProveedor;
 
-select * from vw_Productos;
+select * from vw_ProductosTP;
 
-create view vw_Proveedores as
+create view vw_ProveedoresP as
 select Proveedores.codigoProveedor, Proveedores.NITProveedor, Proveedores.direccionProveedor, Proveedores.razonSocial, Proveedores.contactoPrincipal, TelefonoProveedor.numeroPrincipal, EmailProveedor.emailProveedor
 from Proveedores
 inner join TelefonoProveedor on Proveedores.codigoProveedor = TelefonoProveedor.codigoProveedor
 inner join EmailProveedor on Proveedores.codigoProveedor = EmailProveedor.codigoProveedor;
 
-select * from vw_Proveedores;
+select * from vw_ProveedoresP;
+
+select * from DetalleFactura
+	inner join Factura on DetalleFactura.numeroFactura = Factura.numeroFactura
+    inner join Clientes on Factura.codigoCliente = Clientes.codigoCliente
+    inner join Productos on DetalleFactura.codigoProducto = Productos.codigoProducto
+    where Factura.numeroFactura = 1;
