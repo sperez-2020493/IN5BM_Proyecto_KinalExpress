@@ -4,18 +4,12 @@
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<queryString>
-		<![CDATA[call sp_ListarProveedores();]]>
+		<![CDATA[select * from vw_Proveedores;]]>
 	</queryString>
 	<field name="codigoProveedor" class="java.lang.Integer">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="NITProveedor" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="nombresProveedor" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="apellidosProveedor" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="direccionProveedor" class="java.lang.String">
@@ -27,27 +21,30 @@
 	<field name="contactoPrincipal" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="paginaWeb" class="java.lang.String">
+	<field name="numeroPrincipal" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="emailProveedor" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<background>
 		<band height="802" splitType="Stretch">
 			<image>
 				<reportElement x="2" y="0" width="553" height="802" uuid="77e28d30-dee3-416d-921b-74c8f3e6b653"/>
-				<imageExpression><![CDATA["C:\\Users\\Informatica\\Desktop\\Repositorio\\IN5BM_Proyecto_KinalExpress\\src\\org\\samuelperez\\images\\ReporteProveedores.jpg"]]></imageExpression>
+				<imageExpression><![CDATA["C:\\Users\\David Perez\\Desktop\\Repositorio Casa\\IN5BM_Proyecto_KinalExpress\\src\\org\\samuelperez\\images\\ReporteProveedores.jpg"]]></imageExpression>
 			</image>
 		</band>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch">
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="97" splitType="Stretch">
 			<staticText>
-				<reportElement x="456" y="-10" width="100" height="20" uuid="aba39987-8d50-4d61-a3d2-b706cf0e3823"/>
+				<reportElement x="456" y="13" width="100" height="20" uuid="aba39987-8d50-4d61-a3d2-b706cf0e3823"/>
 				<text><![CDATA[Guatemala 2024]]></text>
 			</staticText>
 		</band>
-	</title>
-	<pageHeader>
-		<band height="19" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
 		<band height="39" splitType="Stretch">
@@ -55,60 +52,57 @@
 				<reportElement x="0" y="1" width="551" height="23" forecolor="#FAD7A0" backcolor="#FAD7A0" uuid="ed12f542-3dfc-4c41-a7d9-bdc682361546"/>
 			</rectangle>
 			<line>
-				<reportElement x="3" y="38" width="553" height="1" uuid="43f71061-42f9-420f-a7bc-4962037ec342"/>
-			</line>
-			<staticText>
-				<reportElement x="3" y="0" width="82" height="20" uuid="e9b3a03f-9d38-4e2a-b4f6-01d6f0f31279"/>
-				<textElement textAlignment="Center"/>
-				<text><![CDATA[NOMBRES]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="122" y="1" width="82" height="20" uuid="389c7942-1485-4df5-8937-5d92588f78dd"/>
-				<textElement textAlignment="Center"/>
-				<text><![CDATA[APELLIDOS]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="238" y="0" width="82" height="20" uuid="1252d93c-8565-49d0-aa40-f52aefae30ea"/>
-				<textElement textAlignment="Center"/>
-				<text><![CDATA[CONTACTO]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="336" y="4" width="91" height="20" uuid="9c52518a-43ab-437f-96fb-784348b71baa"/>
-				<textElement textAlignment="Center"/>
-				<text><![CDATA[PAGUINA WEB]]></text>
-			</staticText>
-			<line>
 				<reportElement x="-1" y="24" width="552" height="1" uuid="73baae4a-c7d9-4c40-a6f2-b9a18e5834a6"/>
 			</line>
+			<staticText>
+				<reportElement x="3" y="0" width="100" height="20" uuid="854ddafd-af65-4795-87cb-9a57c049e971"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[NITProveedor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="125" y="0" width="100" height="20" uuid="07232304-f2c0-42b8-a6b6-2a532e4ff7c7"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Contacto Principal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="263" y="4" width="100" height="20" uuid="bafb510a-76f1-4830-8909-717d59f75044"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Numero Principal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="420" y="1" width="100" height="20" uuid="94e31a5c-3787-4d86-b04e-88bcbaa674e2"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Emai lProveedor]]></text>
+			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="53" splitType="Stretch">
+		<band height="129" splitType="Stretch">
 			<rectangle>
 				<reportElement x="2" y="0" width="554" height="20" forecolor="#F9E79F" backcolor="#F9E79F" uuid="132fb5f9-7f89-403b-830d-01af1a66d591"/>
 			</rectangle>
 			<textField>
-				<reportElement x="336" y="0" width="100" height="20" uuid="a8dc6711-70bb-477e-bb6c-fa402021fe98"/>
+				<reportElement x="3" y="0" width="100" height="20" uuid="e5f6b6d5-cd47-4d66-b483-c1c2132f7494"/>
 				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{paginaWeb}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{NITProveedor}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="1" y="33" width="554" height="3" uuid="afc67481-e909-4cc9-a657-4469b3239356"/>
+				<reportElement x="3" y="20" width="553" height="1" uuid="43f71061-42f9-420f-a7bc-4962037ec342"/>
 			</line>
 			<textField>
-				<reportElement x="3" y="0" width="82" height="20" uuid="76aa07f9-9784-400c-a1e9-cbfb0c64316f"/>
-				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{nombresProveedor}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="123" y="0" width="81" height="20" uuid="80fdb693-0e5b-409d-827a-dca3015c416a"/>
-				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{apellidosProveedor}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="238" y="0" width="73" height="20" uuid="e7a1529c-b6ff-4af7-889c-7f9c1f66da03"/>
+				<reportElement x="125" y="1" width="100" height="20" uuid="c5a9d082-eccf-4687-9ff6-20b779063c7f"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{contactoPrincipal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="263" y="0" width="100" height="20" uuid="edbc92b3-652e-4350-9904-52fd7ca8d726"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{numeroPrincipal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="420" y="0" width="100" height="20" uuid="dfa5436e-d7e2-4312-b3b7-a82b1579e7f6"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{emailProveedor}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

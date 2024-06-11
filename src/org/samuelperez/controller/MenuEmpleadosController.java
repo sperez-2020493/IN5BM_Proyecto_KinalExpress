@@ -243,6 +243,8 @@ public class MenuEmpleadosController implements Initializable {
 
     }
 
+
+    
     /**
      * El metodo realizar la conexion con el procedimiento almacenado que se
      * encarga de listar las informacion de la tabla y todas sus tuplas, esta

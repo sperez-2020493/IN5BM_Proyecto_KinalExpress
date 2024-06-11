@@ -1,3 +1,4 @@
+
 package org.samuelperez.controller;
 
 import java.net.URL;
@@ -26,9 +27,13 @@ import org.samuelperez.db.Conexion;
 import org.samuelperez.report.GenerarReportes;
 import org.samuelperez.system.Principal;
 
+
+
 /**
- * @author Nombre: Samuel Alexander Perez Cap Carnet: 2020493 Grado:IN5BM
+ * @author Nombre: Samuel Alexander Perez Cap
+ * Carnet: 2020493  Grado:IN5BM
  */
+
 /**
  * Este controlador del Menu Clientes tiene una clase el cual se encarga de
  * manejar y controlar las acciones y eventos del menu clientes.
@@ -45,7 +50,7 @@ public class MenuClientesController implements Initializable {
     private enum operaciones {
         AGREGAR, ELIMINAR, EDITAR, ACTUALIZAR, CANCELAR, NINGUNO
     };
-
+    
     // Variable para almacenar la operación actual
     private operaciones tipoDeOperaciones = operaciones.NINGUNO;
 
@@ -367,6 +372,7 @@ public class MenuClientesController implements Initializable {
 
     }
 
+    
     /**
      * Se encarga de cancelar el metodo de editar y reiniciar la vista al
      * precionar el boton Report, la vista vuelve a su estado de inicio.
@@ -394,7 +400,7 @@ public class MenuClientesController implements Initializable {
         parametros.put("codigoCliente", null);
         GenerarReportes.mostrarReportes("ReporteEjemplo.jasper", "Reporte de Clientes", parametros);
     }
-
+    
     /**
      * El metodo actualizar se encarga de realizar la conexion al procedimiento
      * almacenado que se encarga de Actualizar la tupla seleccionada de la tabla

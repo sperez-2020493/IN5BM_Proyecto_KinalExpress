@@ -413,7 +413,6 @@ public class MenuProveedoresController implements Initializable {
         GenerarReportes.mostrarReportes("ReporteProveedores.jasper", "Reporte de Proveedores", parametros);
     }
 
-
     /**
      * El metodo actualizar se encarga de realizar la conexion al procedimiento
      * almacenado que se encarga de Actualizar la tupla seleccionada de la tabla

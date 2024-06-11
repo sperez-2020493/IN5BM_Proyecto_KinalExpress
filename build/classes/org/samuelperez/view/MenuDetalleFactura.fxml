@@ -14,10 +14,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.samuelperez.controller.MenuDetalleFacturaController">
    <children>
-      <ImageView fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tblDetalleFactura" fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/MenuDetalleFactura_Fondo.png" />
          </image>
@@ -82,13 +81,13 @@
             </ImageView>
          </graphic>
       </Button>
-      <TableView fx:id="tblDetalleFactura" layoutX="216.0" layoutY="146.0" prefHeight="391.0" prefWidth="868.0">
+      <TableView fx:id="tblDetalleFactura" layoutX="216.0" layoutY="146.0" onMouseClicked="#seleccionarElemento" prefHeight="391.0" prefWidth="868.0">
          <columns>
             <TableColumn fx:id="colDeatlleFactura" minWidth="173.66" prefWidth="30.0" text="ID" />
             <TableColumn fx:id="colPrecioUnitarioD" minWidth="177.66" prefWidth="75.0" text="PRECIO UNITARIO" />
             <TableColumn fx:id="colCantidadD" minWidth="177.67" prefWidth="75.0" text="CANTIDAD" />
-            <TableColumn fx:id="col" minWidth="177.66" prefWidth="75.0" text="NUMERO FACTURA" />
-            <TableColumn fx:id="colCodigoClienteF" minWidth="177.67" prefWidth="97.0" text="ID PRODUCTO" />
+            <TableColumn fx:id="colNumeroFactura" minWidth="177.66" prefWidth="75.0" text="NUMERO FACTURA" />
+            <TableColumn fx:id="colCodigoProducto" minWidth="177.67" prefWidth="97.0" text="ID PRODUCTO" />
          </columns>
       </TableView>
       <GridPane layoutX="670.0" layoutY="558.0" prefHeight="83.0" prefWidth="419.0">
