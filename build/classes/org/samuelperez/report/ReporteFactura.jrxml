@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteFactura" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0b0edf26-99e0-47b7-83c8-fe1775a14a70">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="42"/>
 	<parameter name="numeroFactura" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -92,20 +92,20 @@
 		</band>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch"/>
+		<band height="71" splitType="Stretch"/>
 	</title>
 	<pageHeader>
-		<band height="70" splitType="Stretch">
+		<band height="142" splitType="Stretch">
 			<textField>
-				<reportElement x="455" y="50" width="100" height="20" forecolor="#FFFFFF" uuid="a56687d3-2307-4415-b4ce-b081f95f900d"/>
+				<reportElement x="454" y="58" width="100" height="20" forecolor="#FFFFFF" uuid="a56687d3-2307-4415-b4ce-b081f95f900d"/>
 				<textElement textAlignment="Justified">
-					<font isBold="true"/>
+					<font size="14" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{fechaFactura}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="344" y="0" width="100" height="29" uuid="2c11598e-ec6a-405a-840d-adcd3feabbce"/>
-				<textElement textAlignment="Center" verticalAlignment="Top">
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
 					<font size="22" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{numeroFactura}]]></textFieldExpression>
@@ -118,30 +118,30 @@
 				<reportElement x="0" y="80" width="555" height="23" forecolor="#FF9900" backcolor="#FFCC99" uuid="2136e10c-aa2c-40e4-b421-5909e2da0ae5"/>
 			</rectangle>
 			<textField>
-				<reportElement x="144" y="0" width="100" height="20" uuid="e8ef55eb-2530-4551-a81d-da498a3bb8af"/>
-				<textElement>
-					<font isBold="true"/>
+				<reportElement x="130" y="0" width="118" height="20" uuid="e8ef55eb-2530-4551-a81d-da498a3bb8af"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nombresCliente}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="144" y="30" width="100" height="20" uuid="414fe061-92b5-4ad1-a607-d2a14e3dccca"/>
+				<reportElement x="130" y="30" width="118" height="20" uuid="414fe061-92b5-4ad1-a607-d2a14e3dccca"/>
 				<textElement verticalAlignment="Middle">
-					<font isBold="true"/>
+					<font size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{apellidosCliente}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="320" y="30" width="100" height="20" uuid="272109a5-7883-491a-bf68-e31db647a0e8"/>
+				<reportElement x="332" y="30" width="159" height="20" uuid="272109a5-7883-491a-bf68-e31db647a0e8"/>
 				<textElement verticalAlignment="Middle">
-					<font isBold="true"/>
+					<font size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{telefonoCliente}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="280" y="0" width="100" height="20" uuid="9d4cdec7-fc4b-486b-9bd5-6a9286eb8116"/>
+				<reportElement x="332" y="0" width="100" height="20" uuid="9d4cdec7-fc4b-486b-9bd5-6a9286eb8116"/>
 				<textElement verticalAlignment="Middle">
-					<font isBold="true"/>
+					<font size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{NITClientes}]]></textFieldExpression>
 			</textField>
@@ -169,6 +169,34 @@
 			<line>
 				<reportElement x="0" y="102" width="554" height="1" uuid="6c487f9f-2ac1-436f-a042-ce4ff2c11dc7"/>
 			</line>
+			<staticText>
+				<reportElement x="30" y="0" width="100" height="20" uuid="35fc4f03-4c7c-40c5-9006-054367cd0bd6"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Nombres: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="30" width="100" height="20" uuid="e3b5397e-102a-4ca4-9281-fb8602bd7772"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Apellidos: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="222" y="0" width="100" height="20" uuid="87228f12-d739-45f3-8f45-c1d37f5e6908"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[NIT:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="222" y="30" width="100" height="20" uuid="4a7cf271-18d2-4388-bece-1eddb9a7d526"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Telefono:]]></text>
+			</staticText>
 		</band>
 	</columnHeader>
 	<detail>

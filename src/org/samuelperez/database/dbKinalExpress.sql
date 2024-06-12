@@ -249,7 +249,6 @@ begin
 end $$
 delimiter ;
 
-call sp_ActualizarClientes(1,'5434534','Orlando','Gomez','11 Calle y 10 Avenida','12345678','ogomez');
 
 delimiter $$
 create procedure sp_EliminarClientes(in codigoCliente int)

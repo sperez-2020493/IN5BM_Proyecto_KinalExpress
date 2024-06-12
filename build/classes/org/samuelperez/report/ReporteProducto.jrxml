@@ -2,10 +2,9 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteProducto" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1c65abdb-ff4c-4b9b-810a-21aeb9312bc9">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="288"/>
+	<property name="ireport.y" value="0"/>
 	<queryString>
-		<![CDATA[select * from vw_ProductosTP;
-]]>
+		<![CDATA[select * from vw_ProductosTP;]]>
 	</queryString>
 	<field name="codigoProducto" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
@@ -34,7 +33,7 @@
 	<background>
 		<band height="802" splitType="Stretch">
 			<image>
-				<reportElement x="0" y="0" width="555" height="802" uuid="10d106b2-7a5d-4124-924e-c2f49bacf561"/>
+				<reportElement x="1" y="0" width="556" height="802" uuid="485d139e-43df-4b80-bb69-092adb8da2a8"/>
 				<imageExpression><![CDATA["C:\\Users\\David Perez\\Desktop\\Repositorio Casa\\IN5BM_Proyecto_KinalExpress\\src\\org\\samuelperez\\images\\ReporteProducto.jpg"]]></imageExpression>
 			</image>
 		</band>
@@ -43,7 +42,7 @@
 		<band height="79" splitType="Stretch"/>
 	</title>
 	<pageHeader>
-		<band height="59" splitType="Stretch"/>
+		<band height="119" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
 		<band height="68" splitType="Stretch">

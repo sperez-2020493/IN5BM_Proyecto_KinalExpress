@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteProveedores" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="eb93bc5d-5a0a-4b28-ad3c-d39981b689f5">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="76"/>
 	<queryString>
 		<![CDATA[select * from vw_ProveedoresP;]]>
 	</queryString>
@@ -27,7 +27,7 @@
 	<background>
 		<band height="802" splitType="Stretch">
 			<image>
-				<reportElement x="2" y="0" width="553" height="802" uuid="77e28d30-dee3-416d-921b-74c8f3e6b653"/>
+				<reportElement x="2" y="0" width="554" height="802" uuid="632d30fc-286e-4388-98a0-1844f4de4d8c"/>
 				<imageExpression><![CDATA["C:\\Users\\David Perez\\Desktop\\Repositorio Casa\\IN5BM_Proyecto_KinalExpress\\src\\org\\samuelperez\\images\\ReporteProveedores.jpg"]]></imageExpression>
 			</image>
 		</band>
@@ -36,7 +36,7 @@
 		<band height="79" splitType="Stretch"/>
 	</title>
 	<pageHeader>
-		<band height="71" splitType="Stretch"/>
+		<band height="139" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
 		<band height="39" splitType="Stretch">
