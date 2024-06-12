@@ -207,13 +207,12 @@ begin
     values (codigoCliente, NITClientes, nombresCliente, apellidosCliente, direccionCliente, telefonoCliente, correoCliente);
 end $$
 delimiter ;
-call sp_AgregarClientes(1,'5454852121','Samuel','Perez','12 Calle y 6 Avenida','3441421','Sperez');
-call sp_AgregarClientes(2,'4444444444','Luis','Orlando','13 Calle 12 Avenida','3441421','Sperez');
-call sp_AgregarClientes(3,'4444444444','Luis','Orlando','13 Calle 12 Avenida','3441421','Sperez');
-call sp_AgregarClientes(4,'4444444444','Luis','Orlando','13 Calle 12 Avenida','3441421','Sperez');
-call sp_AgregarClientes(5,'4444444444','Luis','Orlando','13 Calle 12 Avenida','3441421','Sperez');
-call sp_AgregarClientes(6,'4444444444','Luis','Orlando','13 Calle 12 Avenida','3441421','Sperez');
-call sp_AgregarClientes(7,'4444444444','Luis','Orlando','13 Calle 12 Avenida','3441421','Sperez');
+call sp_AgregarClientes(1,'5454852121','Samuel Aexander','Perez Cap','7A-15 calle-Zona 18','32145678','sperez@gmail.com');
+call sp_AgregarClientes(3,'6985784512','Juan Carlos','Pérez García','15A-9 calle-zona 13','12547896',' juanpg@gmail.com');
+call sp_AgregarClientes(4,'9874523654',' María Alejandra',' López Torres','8A-7 calle-zona 8','36524785','marialt@gmail.com');
+call sp_AgregarClientes(5,'6665844412','Carlos David','Rodríguez Méndez','4A-8 calle-zona 9','78951254','carlosrm@gmail.com');
+call sp_AgregarClientes(6,'6985589611','Luis Miguel','Orlando Tubac','12A-12 calle-Zona 10','45678901','luiso@gmail.com');
+call sp_AgregarClientes(7,'7778541123','Pedro Luis','Gómez Sánchez',' 9A-7calle-Zona 5','56789012','pedrogs@gmail.com');
 
 
 delimiter $$
@@ -259,7 +258,6 @@ begin
 end $$
 delimiter ;
  
-call sp_EliminarClientes(5);
 
 
 -- TIPO PRDUCTO
@@ -271,8 +269,9 @@ begin
 end $$
 delimiter ;
 
-call sp_AgregarTipoProducto(1,'Producto lactio');
+call sp_AgregarTipoProducto(1,'Bebidas');
 call sp_AgregarTipoProducto(2,'Carnes frias');
+call sp_AgregarTipoProducto(3,'Lacteos');
 
 
 delimiter $$
@@ -304,8 +303,6 @@ begin
 end $$
 delimiter ;
 
-call sp_ActualizarTipoProducto(1,'Frutas');
-
 
 delimiter $$
 create procedure sp_EliminarTipoProducto(in codigoTipoProducto int)
@@ -314,7 +311,6 @@ begin
 end $$
 delimiter ;
  
-call sp_EliminarTipoProducto(2);
 
 
 -- CARGO EMPLEADO
@@ -439,8 +435,11 @@ begin
 end $$
 delimiter ;
 
-call sp_AgregarProveedores(1,'4587152','Carlos Luis','Perez Gomez','Mi Casa 1 zona 3','Pepsico Iberia Servicios Centrales','5478-5546','PePsico.com');
-call sp_AgregarProveedores(2,'4587152','Carlos Luis','Tubac Gomez','Mi Casa 1 zona 3','Pepsico Iberia Servicios Centrales','5478-5546','PePsico.com');
+call sp_AgregarProveedores(1,'7895415','Carlos Luis','Tubac Gomez','4 avenida-12 calle-Zona 10','Pepsico','5478-5546','PePsico.com');
+call sp_AgregarProveedores(2,'1236454','Diego Ramiro','Zapata Tubac','5 avenida-10 calle-Zona 11','Toledo','5478-5546','Toledo.com');
+call sp_AgregarProveedores(3,'9635221','Oscar Daniel','Torrez Torrez','12 avenida-3 calle-Zona 9','Bremen','8884-5632','Bremen.com');
+call sp_AgregarProveedores(4,'9845636','Samuel Alexander','Perez Cap','9 avenida-5 calle-Zona 3','Grupo Lala','1777-8222','LecheLala.com');
+call sp_AgregarProveedores(5,'4512666','Luis Aaron','Gomez Giyen','Zona 8 avenida-9 calle-Zona 1','Cervecería CA','7845-9999','CerveceriaCentro@Americano.com');
 
 
 delimiter $$
@@ -480,8 +479,6 @@ begin
 end $$
 delimiter ;
 
-call sp_ActualizarProveedores(1,'5555888971','Carlos Luis','Tubac Gomez','Mi Casa 45 zona 18','Pepsico Iberia Servicios Centrales','7878-4545','Pepsico.pepsi.com');
-
 
 delimiter $$
 create procedure sp_EliminarProveedores(in codigoProveedor int)
@@ -490,7 +487,6 @@ begin
 end $$
 delimiter ;
  
-call sp_EliminarProveedores(2);
 
 -- Email Proveedor
 
@@ -503,6 +499,11 @@ end $$
 delimiter ;
 
 call sp_AgregarEmailProveedor(1,'PepsicoGT@gmail.com','Correo de cadena de suministros',1);
+call sp_AgregarEmailProveedor(2,'Toledo@gmail.com','Correo de cadena de suministros',2);
+call sp_AgregarEmailProveedor(3,'Bremen@gmail.com','Correo de cadena de suministros',3);
+call sp_AgregarEmailProveedor(4,'GrupoLalaGT@gmail.com','Correo de cadena de suministros',4);
+call sp_AgregarEmailProveedor(5,'CerveseriaCA@gmail.com','Correo de cadena de suministros',5);
+
 
 delimiter $$
 create procedure sp_ListarEmailProveedor()
@@ -552,7 +553,12 @@ begin
 end $$
 delimiter ;
 
-call sp_agregarTelefonoProveedor(2,'52526968','12549865','502',1);
+call sp_agregarTelefonoProveedor(1,'52526968','47582145','502',1);
+call sp_agregarTelefonoProveedor(2,'47855821','63638989','502',2);
+call sp_agregarTelefonoProveedor(3,'96965421','21546254','502',3);
+call sp_agregarTelefonoProveedor(4,'17754745','78945123','502',4);
+call sp_agregarTelefonoProveedor(5,'78541254','36528418','502',5);
+
 
 delimiter $$
 create procedure sp_ListarTelefonoProveedor()
@@ -603,8 +609,11 @@ begin
 end $$
 delimiter ;
 
-call sp_AgregarProductos('1','Coca-Cola de 3L',15.5,192,14,'Coca cola espuma',4,1,1);
-call sp_AgregarProductos('3','Coca-Cola de 3L',15.5,192,14,'Coca cola espuma',4,1,1);
+call sp_AgregarProductos('1','Pepsi 3L',15.5,181.8,363.6,'Litro de cola',4,1,1);
+call sp_AgregarProductos('2','Jamon 600g',8.5,96.5,192.2,'jamon',15,1,2);
+call sp_AgregarProductos('3','Salchichas 100g',12,144,288,'paquete de salquichas',30,2,3);
+call sp_AgregarProductos('4','Lech 1L',12,144,288,'Litro de leche',15,3,4);
+call sp_AgregarProductos('5','6 PACK cerveza',55,660,1320,'Latas cerveza',9,1,5);
 
 
 delimiter $$
@@ -661,7 +670,7 @@ begin
 end $$
 delimiter ;
 
-call sp_AgregarFactura(1,'Pagado',100.0,'2024-05-10',2,1);
+call sp_AgregarFactura(1,'Pagado',100.0,'2024-05-10',1,1);
 call sp_AgregarFactura(2,'Pagado',100.0,'2024-05-10',3,2);
 
 
@@ -872,7 +881,7 @@ delimiter ;
 
 
 create view vw_ProductosTP as
-select Productos.codigoProducto, Productos.precioUnitario, Productos.precioDocena, Productos.precioMayor, Productos.existencia, TipoProducto.Descripcion, Proveedores.razonSocial
+select Productos.codigoProducto, Productos.descripcionProducto, Productos.precioUnitario, Productos.precioDocena, Productos.precioMayor, Productos.existencia, TipoProducto.Descripcion, Proveedores.razonSocial
 from Productos
 inner join TipoProducto on Productos.codigoTipoProducto = TipoProducto.codigoTipoProducto
 inner join Proveedores on Productos.codigoProveedor = Proveedores.codigoProveedor;
@@ -880,7 +889,7 @@ inner join Proveedores on Productos.codigoProveedor = Proveedores.codigoProveedo
 select * from vw_ProductosTP;
 
 create view vw_ProveedoresP as
-select Proveedores.codigoProveedor, Proveedores.NITProveedor, Proveedores.direccionProveedor, Proveedores.razonSocial, Proveedores.contactoPrincipal, TelefonoProveedor.numeroPrincipal, EmailProveedor.emailProveedor
+select Proveedores.codigoProveedor, Proveedores.NITProveedor, Proveedores.direccionProveedor, Proveedores.razonSocial, TelefonoProveedor.numeroPrincipal, EmailProveedor.emailProveedor
 from Proveedores
 inner join TelefonoProveedor on Proveedores.codigoProveedor = TelefonoProveedor.codigoProveedor
 inner join EmailProveedor on Proveedores.codigoProveedor = EmailProveedor.codigoProveedor;

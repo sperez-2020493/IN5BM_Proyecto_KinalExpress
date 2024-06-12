@@ -21,11 +21,14 @@
 	<field name="numeroPrincipal" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
+	<field name="emailProveedor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
 	<background>
 		<band height="802" splitType="Stretch">
 			<image>
 				<reportElement x="2" y="0" width="553" height="802" uuid="77e28d30-dee3-416d-921b-74c8f3e6b653"/>
-				<imageExpression><![CDATA["C:\\Users\\Informatica\\Desktop\\Repositorio\\IN5BM_Proyecto_KinalExpress\\src\\org\\samuelperez\\images\\ReporteProveedores.jpg"]]></imageExpression>
+				<imageExpression><![CDATA["C:\\Users\\David Perez\\Desktop\\Repositorio Casa\\IN5BM_Proyecto_KinalExpress\\src\\org\\samuelperez\\images\\ReporteProveedores.jpg"]]></imageExpression>
 			</image>
 		</band>
 	</background>
@@ -33,50 +36,76 @@
 		<band height="79" splitType="Stretch"/>
 	</title>
 	<pageHeader>
-		<band height="97" splitType="Stretch">
-			<staticText>
-				<reportElement x="456" y="13" width="100" height="20" uuid="aba39987-8d50-4d61-a3d2-b706cf0e3823"/>
-				<text><![CDATA[Guatemala 2024]]></text>
-			</staticText>
-		</band>
+		<band height="71" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
 		<band height="39" splitType="Stretch">
 			<rectangle>
-				<reportElement x="0" y="1" width="551" height="23" forecolor="#FAD7A0" backcolor="#FAD7A0" uuid="ed12f542-3dfc-4c41-a7d9-bdc682361546"/>
+				<reportElement x="0" y="1" width="554" height="23" forecolor="#FAD7A0" backcolor="#FAD7A0" uuid="ed12f542-3dfc-4c41-a7d9-bdc682361546"/>
 			</rectangle>
+			<staticText>
+				<reportElement x="221" y="4" width="110" height="21" uuid="bafb510a-76f1-4830-8909-717d59f75044"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[NUMERO PRINCIPAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="4" width="100" height="20" uuid="31b5e76e-a7f0-48dd-8404-520475525461"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PROVEEDOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="104" y="4" width="110" height="20" uuid="cb90f758-75c2-4b91-91e4-518b8f257a9f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[DIRECCION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="351" y="4" width="100" height="20" uuid="f87fbf0b-df3d-45c8-adc7-ae856e324a77"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[EMAIL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="467" y="4" width="89" height="21" uuid="854ddafd-af65-4795-87cb-9a57c049e971"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[NIT]]></text>
+			</staticText>
 			<line>
-				<reportElement x="-1" y="24" width="552" height="1" uuid="73baae4a-c7d9-4c40-a6f2-b9a18e5834a6"/>
+				<reportElement mode="Transparent" x="341" y="0" width="1" height="25" forecolor="#000000" backcolor="#FFFFFF" uuid="73baae4a-c7d9-4c40-a6f2-b9a18e5834a6"/>
+				<graphicElement fill="Solid"/>
 			</line>
-			<staticText>
-				<reportElement x="3" y="0" width="100" height="20" uuid="854ddafd-af65-4795-87cb-9a57c049e971"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[NITProveedor]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="263" y="4" width="100" height="20" uuid="bafb510a-76f1-4830-8909-717d59f75044"/>
-				<textElement textAlignment="Center"/>
-				<text><![CDATA[Numero Principal]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="437" y="0" width="100" height="20" uuid="31b5e76e-a7f0-48dd-8404-520475525461"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[Razon Social]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="125" y="0" width="100" height="20" uuid="cb90f758-75c2-4b91-91e4-518b8f257a9f"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[Direccion Proveedor]]></text>
-			</staticText>
+			<line>
+				<reportElement x="466" y="0" width="1" height="23" uuid="71809d91-c62d-42b6-9655-339a220ed454"/>
+			</line>
+			<line>
+				<reportElement x="103" y="0" width="1" height="23" uuid="9afd65d5-cdd5-4b2e-9aa3-b171bd31f8d5"/>
+			</line>
+			<line>
+				<reportElement x="214" y="0" width="1" height="23" uuid="cf4c018e-7e88-4b28-9471-b9f21ed4b6cd"/>
+			</line>
+			<line>
+				<reportElement x="1" y="1" width="1" height="22" uuid="c61f61a3-0c23-49c0-a526-439e7283a340"/>
+			</line>
+			<line>
+				<reportElement x="553" y="0" width="1" height="23" uuid="858a6ae0-b71f-4b3f-85aa-dd08dcba66d0"/>
+			</line>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="129" splitType="Stretch">
+		<band height="46" splitType="Stretch">
 			<rectangle>
-				<reportElement x="2" y="0" width="554" height="20" forecolor="#F9E79F" backcolor="#F9E79F" uuid="132fb5f9-7f89-403b-830d-01af1a66d591"/>
+				<reportElement x="0" y="0" width="554" height="20" forecolor="#F9E79F" backcolor="#F9E79F" uuid="132fb5f9-7f89-403b-830d-01af1a66d591"/>
 			</rectangle>
 			<textField>
-				<reportElement x="3" y="0" width="100" height="20" uuid="e5f6b6d5-cd47-4d66-b483-c1c2132f7494"/>
+				<reportElement x="456" y="0" width="100" height="20" uuid="e5f6b6d5-cd47-4d66-b483-c1c2132f7494"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{NITProveedor}]]></textFieldExpression>
 			</textField>
@@ -84,22 +113,49 @@
 				<reportElement x="3" y="20" width="553" height="1" uuid="43f71061-42f9-420f-a7bc-4962037ec342"/>
 			</line>
 			<textField>
-				<reportElement x="263" y="0" width="100" height="20" uuid="edbc92b3-652e-4350-9904-52fd7ca8d726"/>
+				<reportElement x="231" y="0" width="100" height="20" uuid="edbc92b3-652e-4350-9904-52fd7ca8d726"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{numeroPrincipal}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="437" y="0" width="100" height="20" uuid="58d58346-d686-4573-9c7d-4e31f93763de"/>
+				<reportElement x="2" y="0" width="100" height="20" uuid="58d58346-d686-4573-9c7d-4e31f93763de"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{razonSocial}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="125" y="0" width="100" height="20" uuid="27f6d82c-122f-4e46-91ce-8d834d83c67b"/>
+				<reportElement x="105" y="0" width="109" height="20" uuid="27f6d82c-122f-4e46-91ce-8d834d83c67b"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font isBold="false"/>
+					<font size="8" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{direccionProveedor}]]></textFieldExpression>
 			</textField>
+			<textField>
+				<reportElement x="351" y="1" width="100" height="20" uuid="916e9946-b705-44cc-ab2b-7289f077c5fc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{emailProveedor}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="3" y="1" width="553" height="1" uuid="d676c5ce-1adb-4509-9bbe-7c24a11f9c4e"/>
+			</line>
+			<line>
+				<reportElement x="104" y="1" width="1" height="19" uuid="0cf602ed-7e68-4cc6-8e3d-f1bc5dab9f58"/>
+			</line>
+			<line>
+				<reportElement x="467" y="2" width="1" height="18" uuid="8a4ea86e-a6f6-4dbe-a703-345550db427d"/>
+			</line>
+			<line>
+				<reportElement mode="Transparent" x="342" y="2" width="1" height="18" forecolor="#000000" backcolor="#FFFFFF" uuid="857a3a90-0efe-4e33-812b-7032613b605e"/>
+				<graphicElement fill="Solid"/>
+			</line>
+			<line>
+				<reportElement x="214" y="2" width="1" height="18" uuid="a83d336d-9ecd-4244-b4fc-24e19fffa0f4"/>
+			</line>
+			<line>
+				<reportElement x="554" y="1" width="1" height="18" uuid="fda9fedd-cafd-4ac5-bed6-9cb62299c077"/>
+			</line>
+			<line>
+				<reportElement x="2" y="2" width="1" height="18" uuid="380ab748-2429-468b-ac8f-9325bbc6cf63"/>
+			</line>
 		</band>
 	</detail>
 	<columnFooter>

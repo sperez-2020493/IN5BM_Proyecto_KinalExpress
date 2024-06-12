@@ -3,11 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/David%20Perez/Desktop/Repositorio%20Casa/IN5BM_Proyecto_KinalExpress/src/org/samuelperez/System/Principal.java</file>
-            <file>file:/C:/Users/David%20Perez/Desktop/Repositorio%20Casa/IN5BM_Proyecto_KinalExpress/src/org/samuelperez/controller/MenuProductosController.java</file>
-            <file>file:/C:/Users/David%20Perez/Desktop/Repositorio%20Casa/IN5BM_Proyecto_KinalExpress/src/org/samuelperez/controller/MenuProveedoresController.java</file>
-            <file>file:/C:/Users/David%20Perez/Desktop/Repositorio%20Casa/IN5BM_Proyecto_KinalExpress/src/org/samuelperez/controller/MenuFacturaController.java</file>
             <file>file:/C:/Users/David%20Perez/Desktop/Repositorio%20Casa/IN5BM_Proyecto_KinalExpress/src/org/samuelperez/controller/MenuDetalleFacturaController.java</file>
+            <file>file:/C:/Users/David%20Perez/Desktop/Repositorio%20Casa/IN5BM_Proyecto_KinalExpress/src/org/samuelperez/db/Conexion.java</file>
+            <file>file:/C:/Users/David%20Perez/Desktop/Repositorio%20Casa/IN5BM_Proyecto_KinalExpress/src/org/samuelperez/controller/MenuProveedoresController.java</file>
+            <file>file:/C:/Users/David%20Perez/Desktop/Repositorio%20Casa/IN5BM_Proyecto_KinalExpress/src/org/samuelperez/controller/MenuClientesController.java</file>
+            <file>file:/C:/Users/David%20Perez/Desktop/Repositorio%20Casa/IN5BM_Proyecto_KinalExpress/src/org/samuelperez/controller/MenuProductosController.java</file>
+            <file>file:/C:/Users/David%20Perez/Desktop/Repositorio%20Casa/IN5BM_Proyecto_KinalExpress/src/org/samuelperez/report/GenerarReportes.java</file>
+            <file>file:/C:/Users/David%20Perez/Desktop/Repositorio%20Casa/IN5BM_Proyecto_KinalExpress/src/org/samuelperez/System/Principal.java</file>
+            <file>file:/C:/Users/David%20Perez/Desktop/Repositorio%20Casa/IN5BM_Proyecto_KinalExpress/src/org/samuelperez/controller/MenuFacturaController.java</file>
         </group>
     </open-files>
 </project-private>
